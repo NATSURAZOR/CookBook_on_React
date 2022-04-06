@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Spinner, Alert, Row, Col, List } from 'reactstrap';
-
+import { Link } from 'react-router-dom';
 import { api } from '../api';
 
 export function RecipeDetailPage() {
@@ -30,6 +30,9 @@ export function RecipeDetailPage() {
 
   return (
     <Container>
+      <Link to={`/recipe/${slug}/upravit`} >
+        <button>Click</button>
+      </Link>
       <h1>{recipe.title}</h1>
       <Row>
         <Col lg={4}>
