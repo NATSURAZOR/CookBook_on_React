@@ -28,12 +28,15 @@ export function RecipeDetailPage() {
     return <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>;
   }
 
+  console.log(recipe);
+
   return (
     <Container>
       <Link to={`/recipe/${slug}/upravit`} >
-        <button>Click</button>
+        <button>Update</button>
       </Link>
       <h1>{recipe.title}</h1>
+
       <Row>
         <Col lg={4}>
           <h5>{recipe.preparationTime} min</h5>

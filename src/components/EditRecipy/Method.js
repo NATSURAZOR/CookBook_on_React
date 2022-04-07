@@ -1,19 +1,15 @@
 import React from "react";
 import { useState } from 'react';
 
-export function Method({recipe}){
-  const [methodOfCooking, setMethodOfCooking ]= useState(recipe.directions);
+export function Method({newRecipe, setNewRecipe}){
 
-  const updateMethod = (e) => {
-    setMethodOfCooking(e.target.value);
-  }
 
   return (
       <div>
         <fieldset>
           <legend>Method</legend>
           <div>
-            <textarea rows="20" value={methodOfCooking} onChange={updateMethod}></textarea>
+            <textarea rows="20" value={newRecipe.directions} onChange={e => setNewRecipe({...newRecipe, directions:e.target.value})}></textarea>
           </div>
         </fieldset>
       </div>
