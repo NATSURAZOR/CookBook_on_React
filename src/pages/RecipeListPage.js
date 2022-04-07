@@ -4,6 +4,7 @@ import { Container, Spinner, Alert } from 'reactstrap';
 import { api } from '../api';
 import { SearchInput } from '../components/SearchInput';
 import { RecipesList } from '../components/RecipesList';
+import { Link } from 'react-router-dom';
 
 export function RecipeListPage() {
   const [recipes, setRecipes] = useState([]);
@@ -28,6 +29,9 @@ export function RecipeListPage() {
   return (
     <Container>
       <h1>Recepty</h1>
+      <Link to={"/new-recipe"} >
+        <button>New Recipe</button>
+      </Link>
       <SearchInput
         className="mb-4"
         value={searchValue}

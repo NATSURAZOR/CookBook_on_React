@@ -1,10 +1,53 @@
 import React from "react";
 import { useState } from 'react';
 
-export function Ingredients({recipe}){
-  console.log(recipe);
-  let ingredients = recipe.ingredients;
-  console.log(ingredients);
+export function Ingredients({newRecipe, setNewRecipe}){
+  const [newIngredient, setNewIngredient] = useState({
+    _id: '',
+    name: "",
+    amount: '',
+    amountUnit: ""
+  })
+
+  const [newGroup, setNewGroup] = useState({
+    _id: '',
+    name: ''
+  })
+
+  function deleteIngredient(id){
+    const newList = newRecipe.ingredients.filter((ingredient) => ingredient._id !== id);
+    setNewRecipe({...newRecipe, ingredients: newList});
+  }
+
+  function addIngredient(){
+    const newList = newRecipe.ingredients;
+
+    newList.push(newIngredient);
+
+    setNewRecipe({...newRecipe, ingredients: newList});
+
+    setNewIngredient({
+      _id: '',
+      name: "",
+      amount: '',
+      amountUnit: ""
+    })
+  }
+
+  function addGroup(){
+    const newList = newRecipe.ingredients;
+
+    newList.push(newGroup);
+
+    setNewRecipe({...newRecipe, ingredients: newList});
+
+    setNewGroup({
+      _id: '',
+      name: ''
+    })
+
+  }
+
 
 
   return (
@@ -13,9 +56,9 @@ export function Ingredients({recipe}){
         <legend>Ingredients</legend>
         <div className="EditRecipy-listOfIngredients">
           <ul>
-          {ingredients?.map((ingredient) => (
+          {newRecipe.ingredients?.map((ingredient) => (
             <li key={ingredient._id}>
-              <button  >del</button>
+              <button type="button" onClick={() => deleteIngredient(ingredient._id)}>del</button>
               <p>{ingredient.amount}</p>
               <p>{ingredient.amountUnit}</p>
               <p>{ingredient.name}</p>
@@ -26,19 +69,19 @@ export function Ingredients({recipe}){
         <div className="EditRecipy-addIngredient">
           <h3>Add ingredient</h3>
           <div>
-          <input type="number" min="1" max="99" placeholder="Count"></input>
-          <input type="text" maxLenght="20" placeholder="Type"></input>
+          <input type="number" min="1" max="99" placeholder="Count" value={newIngredient.amount } onChange={e => setNewIngredient({...newIngredient, amount: e.target.valueAsNumber})} />
+          <input type="text" maxlenght="20" placeholder="Type" value={newIngredient.amountUnit} onChange={e => setNewIngredient({...newIngredient, amountUnit: e.target.value})} />
           </div>
           <div>
-          <input type="text" maxLenght="30" placeholder="Name"></input>
-          <button>Add</button>
+          <input type="text" maxlenght="30" placeholder="Name" value={newIngredient.name} onChange={e => setNewIngredient({...newIngredient, name:e.target.value})} />
+          <button  type="button" onClick={addIngredient}>Add</button>
           </div>
         </div>
         <div className="EditRecipy-AddAGroup ">
           <h3>Add Group</h3>
           <div>
-            <input type="text" maxLenght="30" placeholder="Group name"></input>
-            <button>Add</button>
+            <input type="text" maxlenght="30" placeholder="Group name" value={newGroup.name } onChange={e => setNewGroup({...newGroup, name: e.target.value})} />
+            <button type="button" onClick={addGroup} >Add</button>
           </div>
         </div>
       </fieldset>

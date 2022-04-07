@@ -1,17 +1,8 @@
 import React from "react";
 import { useState } from 'react';
 
-export function BasicData({recipe}){
-  const [preparationTime, setPreparationTime] = useState(recipe.preparationTime);
-  const [numberOfServings, setNumberOfServings] = useState(1);
+export function BasicData({newRecipe, setNewRecipe}){
 
-  const updatePrepTime = (e) => {
-    setPreparationTime(e.target.value);
-  }
-
-  const updateNumberOfServings = (e) => {
-    setNumberOfServings(e.target.value);
-  }
 
   return (
     <div className="EditRecipy-basic-data">
@@ -19,12 +10,12 @@ export function BasicData({recipe}){
       <legend>Basic data</legend>
       <div className="EditRecipy-preparationTime">
         <label htmlFor="preparationTime">Preparation Time</label>
-        <input id="preparationTime" type="number" min="1" max="999" value={preparationTime} onChange={updatePrepTime} />
+        <input id="preparationTime" type="number" min="1" max="999"  value={newRecipe.preparationTime} onChange={e => setNewRecipe({...newRecipe, preparationTime:e.target.value})} />
         <span>min</span>
       </div>
       <div className="EditRecipy-NumberOfServings">
         <label htmlFor='NumberOfServings'>Number of servings</label>
-        <input id="NumberOfServings" type="number" min="1" max="999" value={numberOfServings} onChange={updateNumberOfServings} />
+        <input id="NumberOfServings" type="number" min="1" max="999" value={newRecipe.servingCount} onChange={e => setNewRecipe({...newRecipe, servingCount:e.target.value})} />
       </div>
       <div className="EditRecipy-topping">
         <label htmlFor="toping">Toping</label>
