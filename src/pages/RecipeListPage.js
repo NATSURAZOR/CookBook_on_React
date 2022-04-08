@@ -26,9 +26,12 @@ export function RecipeListPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  console.log(recipes);
+
   return (
     <Container>
       <h1>Recepty</h1>
+      <h3>Aviable records: {recipes.length} </h3>
       <Link to={"/new-recipe"} >
         <button>New Recipe</button>
       </Link>

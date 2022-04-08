@@ -11,8 +11,8 @@ export function Routes() {
     <RouterRoutes>
       <Route index element={<RecipeListPage />} />
       <Route path="/new-recipe" element={<NewRecept />} />
-      <Route path="/recipe/:slug" element={<RecipeDetailPage />} />
-      <Route path="/recipe/:slug/upravit" element={<EditRecipy />} />
+      <Route path="/recipes/:slug" element={<RecipeDetailPage />} />
+      <Route path="/recipes/:slug/upravit" element={<EditRecipy />} />
       <Route path="*" element={<NotFoundPage />} />
     </RouterRoutes>
   );

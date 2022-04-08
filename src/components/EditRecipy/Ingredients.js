@@ -3,14 +3,12 @@ import { useState } from 'react';
 
 export function Ingredients({newRecipe, setNewRecipe}){
   const [newIngredient, setNewIngredient] = useState({
-    _id: '',
     name: "",
     amount: '',
     amountUnit: ""
   })
 
   const [newGroup, setNewGroup] = useState({
-    _id: '',
     name: ''
   })
 
@@ -27,7 +25,6 @@ export function Ingredients({newRecipe, setNewRecipe}){
     setNewRecipe({...newRecipe, ingredients: newList});
 
     setNewIngredient({
-      _id: '',
       name: "",
       amount: '',
       amountUnit: ""
@@ -47,8 +44,6 @@ export function Ingredients({newRecipe, setNewRecipe}){
     })
 
   }
-
-
 
   return (
     <div className="EditRecipy-ingredients">

@@ -12,8 +12,10 @@ export function NewRecept(){
     directions: "",
     ingredients: [],
     preparationTime: 0,
-    servingCount: ""
+    servingCount: "",
   })
+
+  console.log(newRecipe);
 
   return (
     <div>
@@ -21,7 +23,7 @@ export function NewRecept(){
       <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
       <input type="text" value={newRecipe.title} onChange={e => setNewRecipe({...newRecipe, title:e.target.value})} required />
       <Link to={`/`} >
-      <button >Save</button>
+      <button onClick={() => api.post('/recipes', newRecipe)}>Save</button>
       </Link>
       <Link to={`/`} >
         <button>Decline</button>

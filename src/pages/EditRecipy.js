@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, setState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner, Alert} from 'reactstrap';
 import { api } from '../api';
@@ -14,13 +14,7 @@ export function EditRecipy(){
   const { slug } = useParams();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const [newRecipe, setNewRecipe] = useState({
-    title: "",
-    directions: "",
-    ingredients: [],
-    preparationTime: 0,
-    servingCount: ""
-  });
+  const [newRecipe, setNewRecipe] = useState({});
 
   useEffect(() => {
     setLoading(true);
@@ -34,10 +28,6 @@ export function EditRecipy(){
       .finally(() => setLoading(false));
 
   }, [slug]);
-
-  function updateRecepy(){
-    api.post(`/recipes/${slug}`).then(newRecipe => newRecipe.json());
-  }
 
   if (isLoading) {
     return <Spinner />;
@@ -54,10 +44,10 @@ export function EditRecipy(){
     <form>
       <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
       <input type="text" value={newRecipe.title} onChange={e => setNewRecipe({...newRecipe, title:e.target.value})} required />
-      {/* <Link to={`/recipe/${slug}`} > */}
-      <button onSubmit={updateRecepy}>Save</button>
+      {/* <Link to={`/recipes/${slug}`} > */}
+      <button onClick={() => api.post(`/recipes/${newRecipe._id}`, newRecipe)}>Save</button>
       {/* </Link> */}
-      <Link to={`/recipe/${slug}`} >
+      <Link to={`/recipes/${slug}`} >
         <button>Decline</button>
       </Link>
       <div>

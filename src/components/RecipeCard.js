@@ -6,7 +6,7 @@ import placeholder from '../images/food-placeholder.png';
 export function RecipeCard({ title, preparationTime, slug }) {
   return (
     <Card className="h-100">
-      <Link to={`/recipe/${slug}`}>
+      <Link to={`/recipes/${slug}`}>
         <CardImg src={placeholder} alt="Preview" top />
       </Link>
       <CardBody>
