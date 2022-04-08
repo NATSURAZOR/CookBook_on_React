@@ -3,16 +3,36 @@ import { Link } from 'react-router-dom';
 
 import placeholder from '../images/food-placeholder.png';
 
-export function RecipeCard({ title, preparationTime, slug }) {
+export function RecipeCard({ title, preparationTime, slug, sideDish }) {
+
+  function converPreparatonTime(){
+    const hours = preparationTime / 60;
+    const minutes = preparationTime % 60;
+
+    let result = "";
+
+    if (hours >= 1 ){
+      result  =  parseInt(hours) + " h ";
+    }
+
+    if (minutes !== 0){
+      result += minutes + " min";
+    }
+
+    return result;
+  }
+
+
   return (
     <Card className="h-100">
       <Link to={`/recipes/${slug}`}>
         <CardImg src={placeholder} alt="Preview" top />
-      </Link>
+
       <CardBody>
         <CardTitle tag="h5">{title}</CardTitle>
-        <CardSubtitle>{preparationTime} min</CardSubtitle>
+        <CardSubtitle>{converPreparatonTime()} {sideDish}</CardSubtitle>
       </CardBody>
+      </Link>
     </Card>
   );
 }
