@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState, setState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Spinner, Alert} from 'reactstrap';
 import { api } from '../api';
@@ -15,6 +15,7 @@ export function EditRecipy(){
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [newRecipe, setNewRecipe] = useState({});
+  const [startTitle, setStartTitle] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -23,6 +24,7 @@ export function EditRecipy(){
       .get(`/recipes/${slug}`)
       .then((res) => {
         setNewRecipe(res.data);
+        setStartTitle(res.data.title);
       })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
@@ -39,14 +41,26 @@ export function EditRecipy(){
 
   console.log(newRecipe);
 
+  const udateRecipe = () => {
+    api.post(`/recipes/${newRecipe._id}`, newRecipe)
+  }
+
+  const updateRecipeTitle = (e) => {
+    setNewRecipe({...newRecipe, title:e.target.value})
+  }
+  console.log(newRecipe.title);
+  console.log(startTitle);
+
   return (
     <div>
     <form>
       <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
-      <input type="text" value={newRecipe.title} onChange={e => setNewRecipe({...newRecipe, title:e.target.value})} required />
-      {/* <Link to={`/recipes/${slug}`} > */}
-      <button onClick={() => api.post(`/recipes/${newRecipe._id}`, newRecipe)}>Save</button>
-      {/* </Link> */}
+      <input type="text" value={newRecipe.title} onChange={updateRecipeTitle } required />
+      <span hidden={newRecipe.title === ""? false : true}>*Recipe Name can't be empty</span>
+      <span hidden={newRecipe.title === startTitle ? false : true}>*Recipe Name need to change</span>
+      <Link to={`/`} >
+      <button disabled={newRecipe.title === "" || newRecipe.title === startTitle ? true : false} onClick={udateRecipe}>Save</button>
+      </Link>
       <Link to={`/recipes/${slug}`} >
         <button>Decline</button>
       </Link>

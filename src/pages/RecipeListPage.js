@@ -30,8 +30,8 @@ export function RecipeListPage() {
 
   return (
     <Container>
-      <h1>Recepty</h1>
-      <h3>Aviable records: {recipes.length} </h3>
+      <h1>Recipes</h1>
+      <h5>Aviable records: {recipes.length} </h5>
       <Link to={"/new-recipe"} >
         <button>New Recipe</button>
       </Link>

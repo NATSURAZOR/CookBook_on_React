@@ -15,15 +15,23 @@ export function NewRecept(){
     servingCount: "",
   })
 
+  const createNewRecipe = () => {
+    api.post(`/recipes/${newRecipe._id}`, newRecipe)
+  }
+
+  const updateRecipeTitle = (e) => {
+    setNewRecipe({...newRecipe, title:e.target.value})
+  }
   console.log(newRecipe);
 
   return (
     <div>
     <form>
       <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
-      <input type="text" value={newRecipe.title} onChange={e => setNewRecipe({...newRecipe, title:e.target.value})} required />
+      <input type="text" value={newRecipe.title} onChange={updateRecipeTitle} required />
+      <span hidden={newRecipe.title === ""? false : true}>*Recipe Name can't be empty</span>
       <Link to={`/`} >
-      <button onClick={() => api.post('/recipes', newRecipe)}>Save</button>
+      <button disabled={newRecipe.title === "" ? true : false} onClick={createNewRecipe}>Save</button>
       </Link>
       <Link to={`/`} >
         <button>Decline</button>
