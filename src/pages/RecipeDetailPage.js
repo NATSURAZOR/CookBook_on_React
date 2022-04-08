@@ -32,8 +32,11 @@ export function RecipeDetailPage() {
 
   return (
     <Container>
-      <Link to={`/recipe/${slug}/upravit`} >
+      <Link to={`/recipes/${slug}/upravit`} >
         <button>Update</button>
+      </Link>
+      <Link to={'/'}>
+        <button onClick={() => api.delete(`/recipes/${recipe._id}`)} >Delete</button>
       </Link>
       <h1>{recipe.title}</h1>
 
