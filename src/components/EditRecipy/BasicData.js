@@ -13,7 +13,6 @@ export function BasicData({newRecipe, setNewRecipe}){
       return
     }
 
-    setNewRecipe({...newRecipe, preparationTime:e.target.valueAsNumber});
   }
 
   const updateRecipeServingCount = (e) => {
@@ -21,13 +20,10 @@ export function BasicData({newRecipe, setNewRecipe}){
       setNewRecipe({...newRecipe, servingCount: ""});
       return
     }
-
     if (e.target.valueAsNumber < 0){
       setNewRecipe({...newRecipe, servingCount: newRecipe.servingCount});
       return
     }
-
-    setNewRecipe({...newRecipe, servingCount:e.target.valueAsNumber})
   }
 
   return (

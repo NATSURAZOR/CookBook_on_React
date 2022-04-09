@@ -47,6 +47,7 @@ export function RecipeListPage() {
   }
 
   return (
+
     <div className='RecipeListPage-section'>
       <div className='RecipeListPage-header'>
         <div className='RecipeListPage-header-Recipe'>

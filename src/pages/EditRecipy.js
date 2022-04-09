@@ -43,8 +43,10 @@ export function EditRecipy(){
 
   const udateRecipe = () => {
 
+
     api.post(`/recipes/${newRecipe._id}`, newRecipe)
     .catch((error) => setError(error));
+
   }
 
   const updateRecipeTitle = (e) => {
@@ -56,6 +58,7 @@ export function EditRecipy(){
   return (
     <div className="EditRecipe-section">
     <form>
+
       <div className="EditRecipe-header">
         <div className="EditRecipe-header-RecipeTitle">
           <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>

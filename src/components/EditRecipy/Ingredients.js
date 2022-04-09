@@ -57,6 +57,7 @@ export function Ingredients({newRecipe, setNewRecipe}){
       return
     }
 
+
     if (e.target.valueAsNumber < 0){
       return
     }

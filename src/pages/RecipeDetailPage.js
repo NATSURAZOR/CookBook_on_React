@@ -131,5 +131,6 @@ export function RecipeDetailPage() {
           </div>
        </div>
       </div>
+
   );
 }
