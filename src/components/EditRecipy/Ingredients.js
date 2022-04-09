@@ -56,6 +56,12 @@ export function Ingredients({newRecipe, setNewRecipe}){
       setNewIngredient({...newIngredient, amount: ""});
       return
     }
+
+
+    if (e.target.valueAsNumber < 0){
+      return
+    }
+
     setNewIngredient({...newIngredient, amount: e.target.valueAsNumber});
   }
 

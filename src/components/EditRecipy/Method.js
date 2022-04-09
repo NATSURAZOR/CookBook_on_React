@@ -1,8 +1,6 @@
 import React from "react";
 
 export function Method({newRecipe, setNewRecipe}){
-
-
   return (
       <div>
         <fieldset>

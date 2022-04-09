@@ -7,7 +7,7 @@ export function App() {
   return (
     <Router>
       <Layout>
-        <Routes />
+        <Routes className="test" />
       </Layout>
     </Router>
   );
