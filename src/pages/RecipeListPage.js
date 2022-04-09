@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Container, Spinner, Alert } from 'reactstrap';
+import { Spinner, Alert } from 'reactstrap';
 
 import { api } from '../api';
-import { SearchInput } from '../components/SearchInput';
 import { RecipesList } from '../components/RecipesList';
 import { Link } from 'react-router-dom';
+import { SearchInput } from '../components/SearchInput';
+
+import "./RecipeListPage.css";
 
 export function RecipeListPage() {
   const [recipes, setRecipes] = useState([]);
@@ -12,7 +14,7 @@ export function RecipeListPage() {
   const [error, setError] = useState();
   const [searchValue, setSearchValue] = useState('');
 
-  const filterredRecipes = recipes.filter((recipe) =>
+  let filterredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
@@ -28,23 +30,55 @@ export function RecipeListPage() {
 
   console.log(recipes);
 
+  const sortRecipesbyPreparationTimeFromsSmallest = () => {
+    setRecipes(recipes.sort((a,b) =>
+      (a.preparationTime === undefined ? 9999 : a.preparationTime) - (b.preparationTime === undefined ? 9999 : b.preparationTime)
+    ));
+    setSearchValue('a');
+
+  }
+
+  const sortRecipesbyPreparationTimeFromsBiggest = () => {
+    setRecipes(recipes.sort((a,b) =>
+    (b.preparationTime === undefined ? 9999 : b.preparationTime) - (a.preparationTime === undefined ? 9999 : a.preparationTime)
+    ));
+    setSearchValue('b');
+
+  }
+
   return (
-    <Container>
-      <h1>Recipes</h1>
-      <h5>Aviable records: {recipes.length} </h5>
-      <Link to={"/new-recipe"} >
-        <button>New Recipe</button>
-      </Link>
-      <SearchInput
-        className="mb-4"
-        value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
-      />
+    <div className='RecipeListPage-section'>
+      <div className='RecipeListPage-header'>
+        <div className='RecipeListPage-header-Recipe'>
+          <div className='RecipeListPage-Reipe-records' >
+          <h1>Recipes</h1>
+          <h5>Aviable records: {recipes.length} </h5>
+          <div className='RecipeListPage-underHeader-searchButton'>
+            <SearchInput
+            value={searchValue}
+            onChange={(event) => setSearchValue(event.target.value)}
+        />
+      </div>
+          </div>
+          <div className='RecipeListPage-Filter-section'>
+          <select>
+          <option>Filter</option>
+          <option onClick={sortRecipesbyPreparationTimeFromsSmallest}>Preparation Time Smallest - Biggest</option>
+          <option onClick={sortRecipesbyPreparationTimeFromsBiggest}>Preparation Time Biggest - Smallest</option>
+          </select>
+          </div>
+        </div>
+        <div className='RecipeListPage-header-button-link'>
+          <Link to={"/new-recipe"} >
+            <button  className='RecipeListPage-header-newRecipeButton'>New Recipe</button>
+          </Link>
+        </div>
+      </div>
       {isLoading && <Spinner className="mb-4" />}
       {error && (
-        <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>
+        <Alert color="danger">Whooops!!!! Something gona wrong</Alert>
       )}
       <RecipesList recipes={filterredRecipes} />
-    </Container>
+    </div>
   );
 }

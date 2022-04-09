@@ -1,0 +1,14 @@
+.RecipeListPage-header {
+  min-height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.RecipeListPage-header-Recipe{
+  display: flex;
+}
+
+.RecipeListPage-header h1{
+  font-size: 4rem;
+}

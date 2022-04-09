@@ -1,13 +1,15 @@
-import { Card, CardBody, CardTitle, CardSubtitle, CardImg } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
 import placeholder from '../images/food-placeholder.png';
 
 export function RecipeCard({ title, preparationTime, slug, sideDish }) {
 
-  function converPreparatonTime(){
+  function convertPreparatonTime(){
     const hours = preparationTime / 60;
     const minutes = preparationTime % 60;
+
+    if (preparationTime === 0 || preparationTime === undefined){
+      return "Not added time";
+    }
 
     let result = "";
 
@@ -22,17 +24,17 @@ export function RecipeCard({ title, preparationTime, slug, sideDish }) {
     return result;
   }
 
-
   return (
-    <Card className="h-100">
+    <div className='RecipeCard-section'>
       <Link to={`/recipes/${slug}`}>
-        <CardImg src={placeholder} alt="Preview" top />
-
-      <CardBody>
-        <CardTitle tag="h5">{title}</CardTitle>
-        <CardSubtitle>{converPreparatonTime()} {sideDish}</CardSubtitle>
-      </CardBody>
+      <div className='RecipeCard-image'>
+        <img src={placeholder} alt="Preview" />
+      </div>
+      <div className='RecipeCard-bodyText'>
+        <h2>{title}</h2>
+        <p>{convertPreparatonTime()} {sideDish}</p>
+      </div>
       </Link>
-    </Card>
+    </div>
   );
 }

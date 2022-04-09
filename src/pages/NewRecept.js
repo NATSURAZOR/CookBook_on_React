@@ -5,8 +5,10 @@ import { BasicData } from "../components/EditRecipy/BasicData";
 import { Ingredients } from "../components/EditRecipy/Ingredients";
 import { Method } from "../components/EditRecipy/Method";
 import { MethodPreview } from "../components/EditRecipy/MethodPreview";
+import { Alert} from 'reactstrap';
 
 export function NewRecept(){
+  const [error, setError] = useState();
   const [newRecipe, setNewRecipe] = useState({
     title: "",
     directions: "",
@@ -16,12 +18,19 @@ export function NewRecept(){
   })
 
   const createNewRecipe = () => {
-    api.post(`/recipes/${newRecipe._id}`, newRecipe)
+
+    api.post(`/recipes`, newRecipe)
+    .catch((error) => setError(error));
   }
 
   const updateRecipeTitle = (e) => {
-    setNewRecipe({...newRecipe, title:e.target.value})
+    setNewRecipe({...newRecipe, title:e.target.value});
   }
+
+  if (error) {
+    return <Alert color="danger">Whooops!!!! Something gona wrong</Alert>;
+  }
+
   console.log(newRecipe);
 
   return (

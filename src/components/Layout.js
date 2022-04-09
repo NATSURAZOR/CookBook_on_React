@@ -3,11 +3,13 @@ import { Container } from 'reactstrap';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
+import "./Layout.css";
+
 export function Layout({ children }) {
   return (
     <>
       <Header />
-      <Container className="mt-4">{children}</Container>
+      <div className="main-section">{children}</div>
       <Footer />
     </>
   );
