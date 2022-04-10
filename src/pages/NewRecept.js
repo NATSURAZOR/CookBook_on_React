@@ -19,6 +19,7 @@ export function NewRecept(){
 
   const createNewRecipe = () => {
 
+
     api.post(`/recipes`, newRecipe)
     .catch((error) => setError(error));
   }
