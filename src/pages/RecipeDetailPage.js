@@ -64,7 +64,9 @@ export function RecipeDetailPage() {
       return
     }
 
+
     if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 99){
+
       return
     }
 

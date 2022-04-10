@@ -59,6 +59,7 @@ export function RecipeListPage() {
           <option onClick={sortRecipesbyPreparationTimeFromsBiggest}>Preparation Time Biggest - Smallest</option>
           </select>
 
+
           {/* <button onClick={sortRecipesbyPreparationTimeFromsSmallest}>Preparation Time Smallest - Biggest</button>
           <button onClick={sortRecipesbyPreparationTimeFromsBiggest}>Preparation Time Biggest - Smallest</button> */}
           </div>
@@ -68,6 +69,9 @@ export function RecipeListPage() {
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
         />
+
+          </div>
+
         </div>
         <div className='RecipeListPage-header-button-link'>
           <Link to={"/new-recipe"} >

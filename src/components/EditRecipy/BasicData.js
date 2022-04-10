@@ -9,6 +9,7 @@ export function BasicData({newRecipe, setNewRecipe}){
     }
 
     if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 9999){
+
       setNewRecipe({...newRecipe, preparationTime: newRecipe.preparationTime});
       return
     }
@@ -21,7 +22,9 @@ export function BasicData({newRecipe, setNewRecipe}){
       return
     }
 
+
     if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 99){
+
       setNewRecipe({...newRecipe, servingCount: newRecipe.servingCount});
       return
     }

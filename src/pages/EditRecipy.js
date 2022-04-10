@@ -42,10 +42,13 @@ export function EditRecipy(){
 
   console.log(newRecipe);
 
-  const udateRecipe = (event) => {
-    api
-    .post(`/recipes/${newRecipe._id}`, newRecipe)
+
+  const udateRecipe = () => {
+
+
+    api.post(`/recipes/${newRecipe._id}`, newRecipe)
     .catch((error) => setError(error));
+
   }
 
   const updateRecipeTitle = (e) => {
@@ -67,6 +70,7 @@ export function EditRecipy(){
         <Link to={`/`} >
           <button disabled={newRecipe.title === "" || newRecipe.title === startTitle ? true : false} onClick={udateRecipe}>Save</button>
         </Link>
+
           <Link to={`/recipes/${slug}`} >
             <button>Decline</button>
           </Link>
