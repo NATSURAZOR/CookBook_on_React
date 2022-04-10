@@ -17,6 +17,7 @@ export function EditRecipy(){
   const [newRecipe, setNewRecipe] = useState({});
   const [startTitle, setStartTitle] = useState("");
 
+
   useEffect(() => {
     setLoading(true);
 
@@ -41,17 +42,16 @@ export function EditRecipy(){
 
   console.log(newRecipe);
 
-  const udateRecipe = () => {
+  const udateRecipe = (event) => {
 
-    api.post(`/recipes/${newRecipe._id}`, newRecipe)
-    .catch((error) => setError(error));
+
+    api.post(`/recipes/${newRecipe._id}`, newRecipe).catch((error) => setError(error));
+
   }
 
   const updateRecipeTitle = (e) => {
     setNewRecipe({...newRecipe, title:e.target.value})
   }
-  console.log(newRecipe.title);
-  console.log(startTitle);
 
   return (
     <div className="EditRecipe-section">
@@ -64,9 +64,9 @@ export function EditRecipy(){
           <span hidden={newRecipe.title === startTitle ? false : true}>*Recipe Name need to change</span>
          </div>
          <div className="EditRecipe-header-buttons-Save-delete">
-          <Link to={`/`} >
-            <button disabled={newRecipe.title === "" || newRecipe.title === startTitle ? true : false} onClick={udateRecipe}>Save</button>
-          </Link>
+        <Link to={`/`} >
+          <button disabled={newRecipe.title === "" || newRecipe.title === startTitle ? true : false} onClick={udateRecipe}>Save</button>
+        </Link>
           <Link to={`/recipes/${slug}`} >
             <button>Decline</button>
           </Link>

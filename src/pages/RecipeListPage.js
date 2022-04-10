@@ -30,20 +30,20 @@ export function RecipeListPage() {
 
   console.log(recipes);
 
-  const sortRecipesbyPreparationTimeFromsSmallest = () => {
+  const sortRecipesbyPreparationTimeFromsSmallest = (event) => {
+    event.preventDefault();
+
     setRecipes(recipes.sort((a,b) =>
       (a.preparationTime === undefined ? 9999 : a.preparationTime) - (b.preparationTime === undefined ? 9999 : b.preparationTime)
     ));
-    setSearchValue('a');
-
   }
 
-  const sortRecipesbyPreparationTimeFromsBiggest = () => {
+  const sortRecipesbyPreparationTimeFromsBiggest = (event) => {
+    event.preventDefault();
+
     setRecipes(recipes.sort((a,b) =>
     (b.preparationTime === undefined ? 9999 : b.preparationTime) - (a.preparationTime === undefined ? 9999 : a.preparationTime)
     ));
-    setSearchValue('b');
-
   }
 
   return (
@@ -61,11 +61,14 @@ export function RecipeListPage() {
       </div>
           </div>
           <div className='RecipeListPage-Filter-section'>
-          <select>
+          {/* <select>
           <option>Filter</option>
           <option onClick={sortRecipesbyPreparationTimeFromsSmallest}>Preparation Time Smallest - Biggest</option>
           <option onClick={sortRecipesbyPreparationTimeFromsBiggest}>Preparation Time Biggest - Smallest</option>
-          </select>
+          </select> */}
+
+          <button onClick={sortRecipesbyPreparationTimeFromsSmallest}>Preparation Time Smallest - Biggest</button>
+          <button onClick={sortRecipesbyPreparationTimeFromsBiggest}>Preparation Time Biggest - Smallest</button>
           </div>
         </div>
         <div className='RecipeListPage-header-button-link'>
