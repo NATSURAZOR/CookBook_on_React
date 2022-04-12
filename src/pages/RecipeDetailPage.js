@@ -66,7 +66,7 @@ export function RecipeDetailPage() {
       return
     }
 
-    if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 99){
+    if (e.target.valueAsNumber < 1 || e.target.valueAsNumber > 99){
       return
     }
 
@@ -87,6 +87,10 @@ export function RecipeDetailPage() {
 
     if (recipe.servingCount !== NaN && recipe.servingCount !== undefined){
         ingredientAmount = ingredientAmount / recipe.servingCount * newServingCount;
+    }
+
+    if(ingredientAmount === 0){
+      ingredientAmount = ingredient.amount;
     }
 
     return (

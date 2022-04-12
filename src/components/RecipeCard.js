@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import placeholder from '../images/food-placeholder.png';
+import { faBowlFood, faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import "./RecipeCard.css";
+import "./RecipesList.css";
 
 export function RecipeCard({ title, preparationTime, slug, sideDish }) {
 
@@ -27,17 +29,17 @@ export function RecipeCard({ title, preparationTime, slug, sideDish }) {
   }
 
   return (
-    <div className='RecipeCard-section'>
-      <Link to={`/recipes/${slug}`}>
+    <Link className='RecipeCard-section' to={`/recipes/${slug}`}>
       <div className='RecipeCard-image'>
         <img src={placeholder} alt="Preview" />
       </div>
       <div className='RecipeCard-bodyText'>
-        <h2>{title}</h2>
-        <p>{convertPreparatonTime()} {sideDish}</p>
+        <h2>{title.length > 30 ? title.slice(0, 30) + "..." : title}</h2>
+
+        <p>{convertPreparatonTime() === "Not added time" ? "" :<FontAwesomeIcon icon={faClock} />  }{convertPreparatonTime()}
+        {sideDish === undefined ? "" : <FontAwesomeIcon icon={faBowlFood} />} {sideDish}</p>
       </div>
-      </Link>
-    </div>
+    </Link>
 
   );
 }

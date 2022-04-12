@@ -16,7 +16,7 @@
 }
 
 .RecipeListPage-Reipe-records{
-  flex: 2 1 20rem;
+  flex: 1 1 15rem;
 }
 
 .RecipeListPage-underHeader-searchButton{
@@ -32,7 +32,7 @@
   width: 100%;
   border-radius: 2rem;
   padding-left: 0.7rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   border: 0.1rem solid rgb(1, 1, 41);
 }
 
@@ -41,7 +41,7 @@
 }
 
 .RecipeListPage-header-button-link button{
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   background-color: rgb(40, 167, 69);
   padding: 0.5rem;
   color: white;
@@ -58,10 +58,10 @@
 }
 
 .RecipeListPage-Filter-sortingButton{
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   background-color: white;
   border: 0.1rem solid rgb(40, 167, 69);
-  padding: 0 0.5rem ;
+  padding:  0.2rem 0.5rem ;
   border-radius: 2rem;
 }
 
@@ -71,12 +71,12 @@
 }
 
 .RecipeListPage-Filter-sortingButton-active{
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   background-color: rgb(40, 167, 69);
   color: white;
   padding: 0 0.5rem ;
-  border-top-left-radius : 1rem;
-  border-top-right-radius : 1rem;
+  border-top-left-radius : 1.5rem;
+  border-top-right-radius : 1.5rem;
   border: 0.1rem solid rgb(40, 167, 69);
 }
 
@@ -97,7 +97,7 @@
   background-color: white;
   border: 0.1rem solid rgb(40, 167, 69);
   padding: 0 0.5rem ;
-  border-top-right-radius : 1rem;
+  border-top-right-radius : 1.5rem;
 }
 
 .RecipeListPage-Filter-biggest{
@@ -105,8 +105,8 @@
   background-color: white;
   border: 0.1rem solid rgb(40, 167, 69);
   padding: 0 0.5rem ;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 
 .RecipeListPage-Filter-smallest:hover,
