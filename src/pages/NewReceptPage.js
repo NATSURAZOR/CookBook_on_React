@@ -13,7 +13,7 @@ export function NewRecept(){
     title: "",
     directions: "",
     ingredients: [],
-    preparationTime: 0,
+    preparationTime: 1,
     servingCount: "",
   })
 

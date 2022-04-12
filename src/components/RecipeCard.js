@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import placeholder from '../images/food-placeholder.png';
 
+import "./RecipeCard.css";
+
 export function RecipeCard({ title, preparationTime, slug, sideDish }) {
-  
+
   function convertPreparatonTime(){
     const hours = preparationTime / 60;
     const minutes = preparationTime % 60;

@@ -9,28 +9,29 @@ import { Ingredients } from "../components/EditRecipy/Ingredients";
 import { Method } from "../components/EditRecipy/Method";
 import { MethodPreview } from "../components/EditRecipy/MethodPreview";
 
-
 export function EditRecipy(){
   const { slug } = useParams();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [newRecipe, setNewRecipe] = useState({});
   const [startTitle, setStartTitle] = useState("");
-
+  const [newSlug, setNewSlug] = useState(slug);
 
   useEffect(() => {
     setLoading(true);
 
     api
-      .get(`/recipes/${slug}`)
+      .get(`/recipes/${newSlug}`)
       .then((res) => {
         setNewRecipe(res.data);
         setStartTitle(res.data.title);
+
       })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
 
   }, [slug]);
+
 
   if (isLoading) {
     return <Spinner />;
@@ -42,11 +43,19 @@ export function EditRecipy(){
 
   console.log(newRecipe);
 
-  const udateRecipe = (event) => {
+
+  const udateRecipe = () => {
     api
     .post(`/recipes/${newRecipe._id}`, newRecipe)
+    .then((res) => {
+      setNewSlug(res.data.slug);
+    })
     .catch((error) => setError(error));
+
+    setNewRecipe({...newRecipe, slug: newSlug});
   }
+
+
 
   const updateRecipeTitle = (e) => {
     setNewRecipe({...newRecipe, title:e.target.value})
@@ -54,19 +63,19 @@ export function EditRecipy(){
 
   return (
     <div className="EditRecipe-section">
-    <form>
+    <form >
 
       <div className="EditRecipe-header">
         <div className="EditRecipe-header-RecipeTitle">
           <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
           <input type="text" value={newRecipe.title} onChange={updateRecipeTitle } required />
-          <span hidden={newRecipe.title === ""? false : true}>*Recipe Name can't be empty</span>
-          <span hidden={newRecipe.title === startTitle ? false : true}>*Recipe Name need to change</span>
+          <span hidden={newRecipe.title !== ""}>*Recipe Name can't be empty</span>
+          <span hidden={newRecipe.title !== startTitle}>*Recipe Name need to change</span>
          </div>
          <div className="EditRecipe-header-buttons-Save-delete">
-        <Link to={`/`} >
-          <button disabled={newRecipe.title === "" || newRecipe.title === startTitle ? true : false} onClick={udateRecipe}>Save</button>
-        </Link>
+         <Link to={`/`} >
+          <button disabled={newRecipe.title === "" || newRecipe.title === startTitle } onClick={udateRecipe}>Save</button>
+          </Link>
           <Link to={`/recipes/${slug}`} >
             <button>Decline</button>
           </Link>

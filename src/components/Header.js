@@ -10,7 +10,8 @@ export function Header() {
         </div>
         <div className="nav-topings-Name">
           <Link className="nav-recipe" to="/"><h3>Recipe</h3></Link>
-          <Link className="nav-topings" to="/"><h3>Topings</h3></Link>
+          <Link className="nav-topings" to="recipes/side-dishes"><h3>Topings</h3></Link>
+          <Link className="nav-ingredients" to="/recipes/ingredients"><h3>Ingredients</h3></Link>
         </div>
       </div>
     </nav>

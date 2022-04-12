@@ -33,6 +33,90 @@
   border-radius: 2rem;
   padding-left: 0.7rem;
   font-size: 1.8rem;
+  border: 0.1rem solid rgb(1, 1, 41);
 }
 
+.search-inpup :active {
+  border: 0.3rem solid rgb(10, 10, 197);
+}
 
+.RecipeListPage-header-button-link button{
+  font-size: 1.3rem;
+  background-color: rgb(40, 167, 69);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 2rem;
+  border: none;
+}
+
+.RecipeListPage-header-button-link button:hover{
+  background-color: rgb(18, 84, 33);
+}
+
+.RecipeListPage-Filter-section{
+  min-height: 4vh;
+}
+
+.RecipeListPage-Filter-sortingButton{
+  font-size: 1.3rem;
+  background-color: white;
+  border: 0.1rem solid rgb(40, 167, 69);
+  padding: 0 0.5rem ;
+  border-radius: 2rem;
+}
+
+.RecipeListPage-Filter-sortingButton:hover{
+  background-color: rgb(40, 167, 69);
+  color: white;
+}
+
+.RecipeListPage-Filter-sortingButton-active{
+  font-size: 1.3rem;
+  background-color: rgb(40, 167, 69);
+  color: white;
+  padding: 0 0.5rem ;
+  border-top-left-radius : 1rem;
+  border-top-right-radius : 1rem;
+  border: 0.1rem solid rgb(40, 167, 69);
+}
+
+.RecipeListPage-Filter-sortingButton:active,
+.RecipeListPage-Filter-sortingButton-active:active{
+  background-color: rgb(18, 84, 33);
+  color:white;
+}
+
+.RecipeListPage-Filter-2buttons{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.RecipeListPage-Filter-smallest{
+  font-size: 1.3rem;
+  background-color: white;
+  border: 0.1rem solid rgb(40, 167, 69);
+  padding: 0 0.5rem ;
+  border-top-right-radius : 1rem;
+}
+
+.RecipeListPage-Filter-biggest{
+  font-size: 1.3rem;
+  background-color: white;
+  border: 0.1rem solid rgb(40, 167, 69);
+  padding: 0 0.5rem ;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.RecipeListPage-Filter-smallest:hover,
+.RecipeListPage-Filter-biggest:hover{
+  background-color: rgb(40, 167, 69);
+  color: white;
+}
+
+.RecipeListPage-Filter-smallest:active,
+.RecipeListPage-Filter-biggest:active{
+  background-color: rgb(18, 84, 33);
+  color: white;
+}

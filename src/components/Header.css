@@ -9,11 +9,11 @@ nav{
 .nav-topings-Name{
   display: flex;
   justify-content: space-between;
-  width: 15%;
+  width: 25%;
 }
 
 .nav-section {
-  width: 80%;
+  width: 75%;
   margin: auto;
   display: flex;
   align-items: center;
@@ -35,14 +35,15 @@ nav{
 }
 
 .nav-topings,
-.nav-recipe {
+.nav-recipe,
+.nav-ingredients {
   text-decoration: none;
 
 }
 
 .nav-topings h3,
-.nav-recipe h3 {
+.nav-recipe h3,
+.nav-ingredients h3 {
   font-size: 2rem;
   color: white;
-
 }

@@ -33,7 +33,7 @@ export function BasicData({newRecipe, setNewRecipe}){
       <legend><h3>Basic data</h3></legend>
       <div className="EditRecipy-preparationTime">
         <label htmlFor="preparationTime">Preparation Time</label>
-        <input id="preparationTime" type="number" min="1" max="999"  value={newRecipe.preparationTime} onChange={updateRecipePreparationTime} />
+        <input id="preparationTime" type="number" min="0" max="999"  value={newRecipe.preparationTime} onChange={updateRecipePreparationTime} />
         <span>min</span>
       </div>
       <div className="EditRecipy-NumberOfServings">

@@ -1,5 +1,6 @@
 import { RecipeCard } from './RecipeCard';
 
+
 export function RecipesList({ recipes }) {
   return (
     <div className='RecipeList-section'>

@@ -33,6 +33,8 @@ export function RecipeDetailPage() {
     return <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>;
   }
 
+  console.log(recipe);
+
   function convertPreparationTime(){
     const hours = recipe.preparationTime / 60;
     const minutes = recipe.preparationTime % 60;
@@ -93,8 +95,6 @@ export function RecipeDetailPage() {
       </li>
     );
   }
-
-  console.log(recipe);
 
   return (
     <div className='RecipeDetailPage-section'>

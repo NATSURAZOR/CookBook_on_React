@@ -13,6 +13,8 @@ export function RecipeListPage() {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [searchValue, setSearchValue] = useState('');
+  const [filter, setFilter] = useState(1);
+  const [filterButtons, setFilterButtons] = useState(false);
 
   let filterredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchValue.toLowerCase()),
@@ -23,27 +25,60 @@ export function RecipeListPage() {
 
     api
       .get('/recipes')
-      .then((res) => setRecipes(res.data))
+      .then((res) => {
+        if(filter === 1){
+          setRecipes(res.data);
+        }
+        if (filter === 2){
+          sortRecipesbyPreparationTimeFromsSmallest(res.data);
+        }
+        if(filter === 3){
+          sortRecipesbyPreparationTimeFromsBiggest(res.data);
+        }
+      })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-  }, []);
 
-  console.log(recipes);
 
-  const sortRecipesbyPreparationTimeFromsSmallest = (event) => {
-    event.preventDefault();
 
-    setRecipes(recipes.sort((a,b) =>
-      (a.preparationTime === undefined ? 9999 : a.preparationTime) - (b.preparationTime === undefined ? 9999 : b.preparationTime)
-    ));
+  }, [filter]);
+
+  if (isLoading) {
+    return <Spinner />;
   }
 
-  const sortRecipesbyPreparationTimeFromsBiggest = (event) => {
-    event.preventDefault();
+  if (error) {
+    return <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>;
+  }
 
-    setRecipes(recipes.sort((a,b) =>
+  const sortRecipesbyPreparationTimeFromsSmallest = (recipess) => {
+
+    setRecipes(recipess.sort((a,b) =>
+      (a.preparationTime === undefined ? 9999 : a.preparationTime) - (b.preparationTime === undefined ? 9999 : b.preparationTime)
+    ));
+
+
+  }
+  console.log(recipes);
+
+  const sortRecipesbyPreparationTimeFromsBiggest = (recipess) => {
+
+    setRecipes(recipess.sort((a,b) =>
     (b.preparationTime === undefined ? 9999 : b.preparationTime) - (a.preparationTime === undefined ? 9999 : a.preparationTime)
     ));
+
+  }
+
+  const fooSetFilter = () => {
+    setFilter(2);
+  }
+
+  const fooSetFilter2 = () => {
+    setFilter(3);
+  }
+
+  const foooooo = () => {
+    setFilterButtons(!filterButtons);
   }
 
   return (
@@ -52,17 +87,7 @@ export function RecipeListPage() {
           <div className='RecipeListPage-Reipe-records' >
           <h1>Recipes</h1>
           <h5>Aviable records: {recipes.length} </h5>
-          <div className='RecipeListPage-Filter-section'>
-          <select>
-          <option>Filter</option>
-          <option onClick={sortRecipesbyPreparationTimeFromsSmallest}>Preparation Time Smallest - Biggest</option>
-          <option onClick={sortRecipesbyPreparationTimeFromsBiggest}>Preparation Time Biggest - Smallest</option>
-          </select>
-
-          {/* <button onClick={sortRecipesbyPreparationTimeFromsSmallest}>Preparation Time Smallest - Biggest</button>
-          <button onClick={sortRecipesbyPreparationTimeFromsBiggest}>Preparation Time Biggest - Smallest</button> */}
-          </div>
-          </div>
+        </div>
           <div className='RecipeListPage-underHeader-searchButton'>
             <SearchInput
             value={searchValue}
@@ -75,6 +100,15 @@ export function RecipeListPage() {
           </Link>
         </div>
       </div>
+      <div className='RecipeListPage-Filter-section'>
+          <button className='RecipeListPage-Filter-sortingButton' hidden={filterButtons === true} onClick={foooooo}>Sorting</button>
+          <button className='RecipeListPage-Filter-sortingButton-active' hidden={filterButtons === false}  onClick={foooooo}>Sorting</button>
+
+          <div className='RecipeListPage-Filter-2buttons' hidden={filterButtons === false}>
+             <button className='RecipeListPage-Filter-smallest' onClick={fooSetFilter}>Preparation Time Smallest - Biggest</button>
+             <button className='RecipeListPage-Filter-biggest' onClick={fooSetFilter2}>Preparation Time Biggest - Smallest</button>
+          </div>
+          </div>
       {isLoading && <Spinner className="mb-4" />}
       {error && (
         <Alert color="danger">Whooops!!!! Something gona wrong</Alert>
