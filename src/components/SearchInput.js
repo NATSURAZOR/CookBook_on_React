@@ -1,5 +1,6 @@
 
 
 export function SearchInput(props) {
-  return <input placeholder="Find the Recipe" {...props}  />;
+  return <input
+  className="search-input" placeholder="Find the Recipe" {...props}  />;
 }
