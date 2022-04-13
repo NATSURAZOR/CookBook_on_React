@@ -6,6 +6,7 @@ import { Ingredients } from "../components/EditRecipy/Ingredients";
 import { Method } from "../components/EditRecipy/Method";
 import { MethodPreview } from "../components/EditRecipy/MethodPreview";
 import { Alert} from 'reactstrap';
+import { useNavigate } from "react-router-dom";
 
 export function NewRecept(){
   const [error, setError] = useState();
@@ -15,12 +16,16 @@ export function NewRecept(){
     ingredients: [],
     preparationTime: 1,
     servingCount: "",
-  })
+  });
+  let navigate = useNavigate();
 
-  const createNewRecipe = () => {
-
+  const createNewRecipe = (event) => {
+    event.preventDefault();
 
     api.post(`/recipes`, newRecipe)
+    .then((response) => {
+      navigate(`/recipes/${response.data.slug}`);
+    })
     .catch((error) => setError(error));
   }
 
@@ -40,9 +45,7 @@ export function NewRecept(){
       <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
       <input type="text" value={newRecipe.title} onChange={updateRecipeTitle} required />
       <span hidden={newRecipe.title === ""? false : true}>*Recipe Name can't be empty</span>
-      <Link to={`/`} >
       <button disabled={newRecipe.title === "" ? true : false} onClick={createNewRecipe}>Save</button>
-      </Link>
       <Link to={`/`} >
         <button>Decline</button>
       </Link>

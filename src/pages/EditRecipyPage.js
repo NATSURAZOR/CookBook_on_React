@@ -8,6 +8,7 @@ import { BasicData } from "../components/EditRecipy/BasicData";
 import { Ingredients } from "../components/EditRecipy/Ingredients";
 import { Method } from "../components/EditRecipy/Method";
 import { MethodPreview } from "../components/EditRecipy/MethodPreview";
+import { useNavigate } from "react-router-dom";
 
 export function EditRecipy(){
   const { slug } = useParams();
@@ -15,13 +16,14 @@ export function EditRecipy(){
   const [error, setError] = useState();
   const [newRecipe, setNewRecipe] = useState({});
   const [startTitle, setStartTitle] = useState("");
-  const [newSlug, setNewSlug] = useState(slug);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
 
+
     api
-      .get(`/recipes/${newSlug}`)
+      .get(`/recipes/${slug}`)
       .then((res) => {
         setNewRecipe(res.data);
         setStartTitle(res.data.title);
@@ -29,8 +31,7 @@ export function EditRecipy(){
       })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-
-  }, [slug]);
+  }, []);
 
 
   if (isLoading) {
@@ -41,21 +42,18 @@ export function EditRecipy(){
     return <Alert color="danger">Whooops!!!! Something gona wrong</Alert>;
   }
 
-  console.log(newRecipe);
 
+  const udateRecipe = (event) => {
 
-  const udateRecipe = () => {
+    event.preventDefault();
+
     api
     .post(`/recipes/${newRecipe._id}`, newRecipe)
-    .then((res) => {
-      setNewSlug(res.data.slug);
-    })
+    .then((res) =>
+      navigate(`/recipes/${res.data.slug}`, { replace: true })
+    )
     .catch((error) => setError(error));
-
-    setNewRecipe({...newRecipe, slug: newSlug});
   }
-
-
 
   const updateRecipeTitle = (e) => {
     setNewRecipe({...newRecipe, title:e.target.value})
@@ -73,9 +71,7 @@ export function EditRecipy(){
           <span hidden={newRecipe.title !== startTitle}>*Recipe Name need to change</span>
          </div>
          <div className="EditRecipe-header-buttons-Save-delete">
-         <Link to={`/`} >
           <button disabled={newRecipe.title === "" || newRecipe.title === startTitle } onClick={udateRecipe}>Save</button>
-          </Link>
           <Link to={`/recipes/${slug}`} >
             <button>Decline</button>
           </Link>
