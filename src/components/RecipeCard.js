@@ -1,18 +1,45 @@
-import { Card, CardBody, CardTitle, CardSubtitle, CardImg } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
 import placeholder from '../images/food-placeholder.png';
+import { faBowlFood, faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export function RecipeCard({ title, preparationTime, slug }) {
+import "./RecipesList.css";
+
+export function RecipeCard({ title, preparationTime, slug, sideDish }) {
+
+  function convertPreparatonTime(){
+    const hours = preparationTime / 60;
+    const minutes = preparationTime % 60;
+
+    if (preparationTime === 0 || preparationTime === undefined){
+      return "Not added time";
+    }
+
+    let result = "";
+
+    if (hours >= 1 ){
+      result  =  parseInt(hours) + " h ";
+    }
+
+    if (minutes !== 0){
+      result += minutes + " min";
+    }
+
+    return result;
+  }
+
   return (
-    <Card className="h-100">
-      <Link to={`/recipe/${slug}`}>
-        <CardImg src={placeholder} alt="Preview" top />
-      </Link>
-      <CardBody>
-        <CardTitle tag="h5">{title}</CardTitle>
-        <CardSubtitle>{preparationTime} min</CardSubtitle>
-      </CardBody>
-    </Card>
+    <Link className='RecipeCard-section' to={`/recipes/${slug}`}>
+      <div className='RecipeCard-image'>
+        <img src={placeholder} alt="Preview" />
+      </div>
+      <div className='RecipeCard-bodyText'>
+        <h2>{title.length > 30 ? title.slice(0, 30) + "..." : title}</h2>
+
+        <p>{convertPreparatonTime() === "Not added time" ? "" :<FontAwesomeIcon icon={faClock} />  }{convertPreparatonTime()}
+        {sideDish === undefined ? "" : <FontAwesomeIcon icon={faBowlFood} />} {sideDish}</p>
+      </div>
+    </Link>
+
   );
 }

@@ -1,23 +1,32 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Spinner, Alert, Row, Col, List } from 'reactstrap';
+import { Spinner, Alert} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { api } from '../api';
+import { faBowlFood, faClock, faPenToSquare, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "./RecipeDetailPage.css";
 
 export function RecipeDetailPage() {
   const { slug } = useParams();
   const [recipe, setRecipe] = useState({});
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState();
+  const [newServingCount, setNewServingCount] = useState();
 
   useEffect(() => {
     setLoading(true);
 
     api
       .get(`/recipes/${slug}`)
-      .then((res) => setRecipe(res.data))
+      .then((res) => {
+        setRecipe(res.data);
+        setNewServingCount(res.data.servingCount);
+      })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
+
   }, [slug]);
 
   if (isLoading) {
@@ -28,27 +37,143 @@ export function RecipeDetailPage() {
     return <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>;
   }
 
+  console.log(recipe);
+
+  function convertPreparationTime(){
+    const hours = recipe.preparationTime / 60;
+    const minutes = recipe.preparationTime % 60;
+
+    if (recipe.preparationTime === 0 || recipe.preparationTime === undefined){
+      return "Not added time";
+    }
+
+    let result = "";
+
+    if (hours >= 1 ){
+      result  =  parseInt(hours) + " h ";
+    }
+
+    if (minutes !== 0){
+      result += minutes + " min";
+    }
+
+    return result;
+  }
+
+  function ingredientsArray(ingredients) {
+    if(ingredients?.length === 0){
+      return (<div className='RecipeDetailPage-noIngrdients'>No Ingredients.</div>);
+    }
+
+    return ( <div className='RecipeDetailPage-Ingredients-box'>
+      {ingredients?.map((ingredient) => isGroupOrIngredient(ingredient))}
+      </div>
+    );
+  }
+
+  const updateServingCount = (e) => {
+    if (e.target.value === ""){
+      setNewServingCount("");
+      return
+    }
+
+    if (e.target.valueAsNumber < 1 || e.target.valueAsNumber > 99){
+      return
+    }
+
+    setNewServingCount(e.target.valueAsNumber);
+  }
+
+  function isGroupOrIngredient(ingredient)  {
+    if (ingredient?.isGroup){
+
+      return (
+      <li className='RecipeDetailPage-isIngredients-Group' key={ingredient._id}>
+        {ingredient.name}
+      </li>
+      );
+    }
+
+    let ingredientAmount = "";
+    let ingredientAmountUnit = "";
+
+
+    if (ingredient.amount !== NaN && ingredient.amount !== undefined){
+      if (recipe.servingCount === undefined || recipe.servingCount === NaN){
+        ingredientAmount = ingredient.amount;
+      }
+      else{
+        ingredientAmount = ingredient.amount / recipe.servingCount * newServingCount;
+      }
+    }
+
+    if(ingredientAmount === 0){
+      ingredientAmount = ingredient.amount;
+      console.log(ingredientAmount);
+    }
+
+    if (ingredient.amountUnit !== NaN && ingredient.amountUnit !== undefined){
+      ingredientAmountUnit = ingredient.amountUnit;
+    }
+
+
+    return (
+      <li className='RecipeDetailPage-isIngredients-ingredient' key={ingredient._id}>
+        <div className='RecipeDetailPage-isIngredients-ingredient-ingredientAmount'>
+        {ingredientAmount}
+        </div >
+        <div className='RecipeDetailPage-isIngredients-ingredient-ingredientAmountUnit'>{ingredientAmountUnit}
+        </div>
+        <div className='RecipeDetailPage-isIngredients-ingredient-ingredientName'> {ingredient.name} </div>
+      </li>
+    );
+  }
+
   return (
-    <Container>
-      <Link to={`/recipe/${slug}/upravit`} >
-        <button>Click</button>
-      </Link>
-      <h1>{recipe.title}</h1>
-      <Row>
-        <Col lg={4}>
-          <h5>{recipe.preparationTime} min</h5>
-          <List type="unstyled">
-            {recipe.ingredients?.map((ingredient) => (
-              <li key={ingredient._id}>
-                {ingredient.amount} {ingredient.amountUnit} - {ingredient.name}
-              </li>
-            ))}
-          </List>
-        </Col>
-        <Col lg={8}>
-          <p>{recipe.directions}</p>
-        </Col>
-      </Row>
-    </Container>
+    <div className='RecipeDetailPage-section'>
+      <div className='RecipeDetailPage-header-and-buttons'>
+        <div className='RecipeDetailPage-recipeTitle'>
+        <h1>{recipe.title}</h1>
+        </div>
+        <div className='RecipeDetailPage-buttons-delete-and-update'>
+        <Link to={`/recipes/${slug}/upravit`} >
+          <button className='RecipeDetailPage-button-Update'> <FontAwesomeIcon icon={faPenToSquare} />     Edit</button>
+        </Link>
+        <Link to={'/'}>
+          <button className='RecipeDetailPage-button-Delete' onClick={() => api.delete(`/recipes/${recipe._id}`)} > <FontAwesomeIcon icon={faTrashAlt} />     Delete</button>
+        </Link>
+        </div>
+      </div>
+      <div className='RecipeDetailPage-body'>
+        <div className='RecipeDetailPage-preparationTime'>
+          <h5>
+            {convertPreparationTime() === "Not added time" ? "" : <FontAwesomeIcon icon={faClock} /> } {convertPreparationTime()}
+            {recipe.sideDish === undefined ? "" : <FontAwesomeIcon icon={faBowlFood} />} {recipe.sideDish}
+            </h5>
+        </div>
+        <div className='RecipeDetailPage-Ingredients-and-Directions'>
+          <div className='RecipeDetailPage-Ingredients'>
+              <div className='RecipeDetailPage-Ingredient-ServingCount-Section'>
+                <span hidden={recipe.ingredients?.length === 0 || recipe.servingCount === undefined}>Serving Count</span>
+                <div className='RecipeDetailPage-Ingredient-ServingCount-Section-input'>
+                <input hidden={recipe.ingredients?.length === 0 || recipe.servingCount === undefined}
+                      type="number" min="1" max="99" value={newServingCount} onChange={updateServingCount} >
+                </input>
+                </div>
+              </div>
+              {ingredientsArray(recipe.ingredients)}
+          </div>
+          <div className='RecipeDetailPage-Directions'>
+            <p  hidden={recipe?.directions?.length < 1}>{recipe.directions}</p>
+            <div className='RecipeDetailPage-Directions-noMethod' hidden={recipe?.directions?.length > 1}>No Method</div>
+          </div>
+        </div>
+          <div className='RecipeDetailPage-lastUpdateTime'>
+            <h3>Last Changes:</h3>
+            <h4>{recipe.lastModifiedDate?.split("T")[0]}</h4>
+          </div>
+       </div>
+      </div>
+
   );
 }

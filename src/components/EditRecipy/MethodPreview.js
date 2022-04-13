@@ -1,6 +1,11 @@
 import React from "react";
 
-export function MethodPreview(){
+export function MethodPreview({newRecipe}){
 
-  return (<div></div>);
+  return (
+  <div>
+    <h3>Method Preview</h3>
+    <p>{newRecipe.directions}</p>
+  </div>
+  );
 }

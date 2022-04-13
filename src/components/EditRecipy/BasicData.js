@@ -1,30 +1,44 @@
 import React from "react";
-import { useState } from 'react';
 
-export function BasicData({recipe}){
-  const [preparationTime, setPreparationTime] = useState(recipe.preparationTime);
-  const [numberOfServings, setNumberOfServings] = useState(1);
+export function BasicData({newRecipe, setNewRecipe}){
 
-  const updatePrepTime = (e) => {
-    setPreparationTime(e.target.value);
+  const updateRecipePreparationTime = (e) => {
+    if (e.target.value === ""){
+      setNewRecipe({...newRecipe, preparationTime: ""});
+      return
+    }
+
+    if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 9999){
+      setNewRecipe({...newRecipe, preparationTime: newRecipe.preparationTime});
+      return
+    }
+
   }
 
-  const updateNumberOfServings = (e) => {
-    setNumberOfServings(e.target.value);
+  const updateRecipeServingCount = (e) => {
+    if (e.target.value === ""){
+      setNewRecipe({...newRecipe, servingCount: ""});
+      return
+    }
+
+    if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 99){
+      setNewRecipe({...newRecipe, servingCount: newRecipe.servingCount});
+      return
+    }
   }
 
   return (
     <div className="EditRecipy-basic-data">
     <fieldset>
-      <legend>Basic data</legend>
+      <legend><h3>Basic data</h3></legend>
       <div className="EditRecipy-preparationTime">
         <label htmlFor="preparationTime">Preparation Time</label>
-        <input id="preparationTime" type="number" min="1" max="999" value={preparationTime} onChange={updatePrepTime} />
+        <input id="preparationTime" type="number" min="0" max="999"  value={newRecipe.preparationTime} onChange={updateRecipePreparationTime} />
         <span>min</span>
       </div>
       <div className="EditRecipy-NumberOfServings">
         <label htmlFor='NumberOfServings'>Number of servings</label>
-        <input id="NumberOfServings" type="number" min="1" max="999" value={numberOfServings} onChange={updateNumberOfServings} />
+        <input id="NumberOfServings" type="number" min="1" max="999" value={newRecipe.servingCount} onChange={updateRecipeServingCount} />
       </div>
       <div className="EditRecipy-topping">
         <label htmlFor="toping">Toping</label>

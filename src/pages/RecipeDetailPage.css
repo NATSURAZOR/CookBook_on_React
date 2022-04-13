@@ -1,0 +1,152 @@
+.RecipeDetailPage-header-and-buttons{
+  display: flex;
+  align-items: center;
+  min-height: 10vh;
+  margin-top: 1rem;
+}
+
+.RecipeDetailPage-recipeTitle{
+  width: 85%;
+}
+
+.RecipeDetailPage-buttons-delete-and-update{
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  flex-direction: row;
+}
+
+.RecipeDetailPage-button-Update{
+  font-size: 1.7rem;
+  background-color: rgb(40, 167, 69);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 2rem;
+  border: none;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0 1rem 0 0;
+}
+
+.RecipeDetailPage-button-Delete{
+  font-size: 1.7rem;
+  background-color: rgb(167, 40, 40);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 2rem;
+  border: none;
+}
+
+.RecipeDetailPage-Ingredients-and-Directions{
+  display: flex;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+}
+
+.RecipeDetailPage-Ingredients{
+  width: 25%;
+}
+
+.RecipeDetailPage-Directions{
+  width: 75%;
+}
+
+.RecipeDetailPage-recipeTitle h1{
+  font-size: 4rem;
+}
+
+.RecipeDetailPage-preparationTime h5{
+  font-size: 2rem;
+}
+
+.RecipeDetailPage-Ingredient-ServingCount-Section{
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.RecipeDetailPage-Ingredient-ServingCount-Section input{
+  border: 0.1rem solid rgba(1, 1, 41, 0.3);
+  border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  padding: 0 0 0 1rem;
+}
+
+
+
+.RecipeDetailPage-Ingredient-ServingCount-Section span{
+
+  border: 0.1rem solid rgba(1, 1, 41, 0.3);
+  background-color: rgba(1, 1, 41, 0.1);
+  border-bottom-left-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  padding: 0 1rem;
+}
+
+.RecipeDetailPage-Ingredients-box{
+  width: 100%;
+  list-style-type: none;
+}
+
+.RecipeDetailPage-isIngredients-Group,
+.RecipeDetailPage-isIngredients-ingredient{
+  border-top: 0.1rem solid rgba(1, 1, 41, 0.1) ;
+}
+
+.RecipeDetailPage-isIngredients-ingredient{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.RecipeDetailPage-isIngredients-ingredient-ingredientAmount{
+  width: 30%;
+}
+
+.RecipeDetailPage-isIngredients-ingredient-ingredientAmountUnit{
+  width: 20%;
+}
+
+.RecipeDetailPage-isIngredients-ingredient-ingredientName{
+  width: 50%;
+}
+
+.RecipeDetailPage-isIngredients-Group{
+  font-size: 2rem;
+  background-color: rgba(1, 1, 41, 0.1) ;
+  display: flex;
+  justify-content: center;
+}
+
+.RecipeDetailPage-isIngredients-ingredient{
+  font-size: 2rem;
+}
+
+.RecipeDetailPage-Directions{
+  padding-left: 2rem;
+}
+
+.RecipeDetailPage-Directions p{
+  font-size: 2rem;
+}
+
+
+.RecipeDetailPage-lastUpdateTime{
+  margin-top: 2rem;
+}
+
+.RecipeDetailPage-lastUpdateTime h3{
+  font-size: 2.5rem;
+}
+
+.RecipeDetailPage-lastUpdateTime h4{
+  font-size: 1.8rem;
+}
+
+
+/* chybove hlaski */
+.RecipeDetailPage-Directions-noMethod,
+.RecipeDetailPage-noIngrdients{
+  border: 0.2rem solid rgba(1, 1, 41, 0.3);
+  background-color: rgba(12, 12, 255, 0.3);
+  font-size: 3rem;
+}
