@@ -7,8 +7,32 @@
 
 .RecipeListPage-header-Recipe{
   display: flex;
+
+  align-items:center;
+  color: rgb(1, 1, 41);
+
 }
 
 .RecipeListPage-header h1{
   font-size: 4rem;
 }
+
+
+.RecipeListPage-Reipe-records{
+  flex: 2 1 20rem;
+}
+
+.RecipeListPage-underHeader-searchButton{
+  flex: 60 1 20rem;
+}
+
+.RecipeListPage-header-button-link{
+  text-align: right;
+  flex: 1 1 10rem;
+}
+
+input{
+  width: 100%;
+}
+
+
