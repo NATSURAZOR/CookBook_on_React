@@ -12,7 +12,6 @@ export function BasicData({newRecipe, setNewRecipe}){
       setNewRecipe({...newRecipe, preparationTime: newRecipe.preparationTime});
       return
     }
-
   }
 
   const updateRecipeServingCount = (e) => {
