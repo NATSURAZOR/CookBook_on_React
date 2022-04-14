@@ -12,10 +12,6 @@ export function NewRecept(){
   const [error, setError] = useState();
   const [newRecipe, setNewRecipe] = useState({
     title: "",
-    directions: "",
-    ingredients: [],
-    preparationTime: "",
-    servingCount: "",
   });
   let navigate = useNavigate();
 
