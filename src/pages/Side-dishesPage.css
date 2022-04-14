@@ -1,0 +1,14 @@
+.side-dish-page{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.side-dish-page h2{
+  font-size: 4rem;
+}
+
+
+.side-dish-page li{
+  font-size: 2rem;
+}
