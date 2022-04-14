@@ -14,7 +14,7 @@ export function NewRecept(){
     title: "",
     directions: "",
     ingredients: [],
-    preparationTime: 1,
+    preparationTime: "",
     servingCount: "",
   });
   let navigate = useNavigate();

@@ -16,7 +16,7 @@ export function RecipeListPage() {
   const [filter, setFilter] = useState(1);
   const [filterButtons, setFilterButtons] = useState(false);
 
-  let filterredRecipes = recipes.filter((recipe) =>
+  const filterredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
