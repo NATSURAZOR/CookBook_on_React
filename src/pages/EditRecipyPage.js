@@ -44,7 +44,7 @@ export function EditRecipy(){
 
 
   const udateRecipe = (event) => {
-
+    console.log("before update ", newRecipe);
     event.preventDefault();
 
     api

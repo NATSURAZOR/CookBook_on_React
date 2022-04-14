@@ -3,55 +3,64 @@ import { useState } from 'react';
 
 export function Ingredients({newRecipe, setNewRecipe}){
   const [newIngredient, setNewIngredient] = useState({
-    _id: "",
+    isGroup: false,
     name: "",
     amount: "",
     amountUnit: ""
   })
 
   const [newGroup, setNewGroup] = useState({
-    _id: "",
+    isGroup: true,
     name: ""
   })
 
-  function deleteIngredient(id){
+  const deleteIngredient = (id) => {
     const newList = newRecipe.ingredients.filter((ingredient) => ingredient._id !== id);
     setNewRecipe({...newRecipe, ingredients: newList});
   }
 
-  function addIngredient(){
-    const newList = newRecipe.ingredients;
+  const addIngredient = () => {
+    if (newRecipe.ingredients === undefined){
+      const updateRec = newRecipe;
+      updateRec.ingredients = [];
+      setNewRecipe(updateRec);
+    }
 
-    newIngredient._id = "IngredientID" + newRecipe.ingredients.length;
+    const newList = newRecipe.ingredients;
 
     newList.push(newIngredient);
 
     setNewRecipe({...newRecipe, ingredients: newList});
 
     setNewIngredient({
-      _id: "",
+      isGroup: false,
       name: "",
       amount: '',
       amountUnit: ""
     })
   }
 
-  function addGroup(){
-    const newList = newRecipe.ingredients;
+  const addGroup = () => {
+    if (newRecipe.ingredients === undefined){
+      const updateRec = newRecipe;
+      updateRec.ingredients = [];
+      setNewRecipe(updateRec);
+    }
 
-    newGroup._id = "GroupID" + newRecipe.ingredients.length;
+    const newList = newRecipe.ingredients;
 
     newList.push(newGroup);
 
     setNewRecipe({...newRecipe, ingredients: newList});
 
     setNewGroup({
-      _id: "",
+      isGroup: true,
       name: ''
     })
   }
 
   const updateIngredientCount = (e) => {
+
     if (e.target.value === ""){
       setNewIngredient({...newIngredient, amount: ""});
       return
