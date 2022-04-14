@@ -20,7 +20,7 @@
 }
 
 .RecipeListPage-underHeader-searchButton{
-  flex: 60 1 20rem;
+  flex: 12 1 15rem;
 }
 
 .RecipeListPage-header-button-link{
@@ -43,7 +43,7 @@
 .RecipeListPage-header-button-link button{
   font-size: 1.7rem;
   background-color: rgb(40, 167, 69);
-  padding: 0.5rem;
+  padding: 0.5rem 0.8rem;
   color: white;
   border-radius: 2rem;
   border: none;

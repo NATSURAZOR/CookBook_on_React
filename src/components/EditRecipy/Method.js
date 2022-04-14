@@ -12,7 +12,7 @@ export function Method({newRecipe, setNewRecipe}){
   }
 
   return (
-      <div>
+      <div className="EditRecipy-Method">
         <fieldset>
           <legend><h3>Method</h3></legend>
           <div>

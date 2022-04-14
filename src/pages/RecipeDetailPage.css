@@ -37,6 +37,24 @@
   border: none;
 }
 
+.RecipeDetailPage-button-Update:hover{
+  background-color: rgb(18, 84, 33);
+}
+
+.RecipeDetailPage-button-Delete:hover{
+  background-color: rgb(94, 21, 21);
+}
+
+.RecipeDetailPage-button-Update:active{
+  background-color: rgb(18, 84, 33);
+  font-size: 2rem;
+}
+
+.RecipeDetailPage-button-Delete:active{
+  background-color: rgb(94, 21, 21);
+  font-size: 2rem;
+}
+
 .RecipeDetailPage-Ingredients-and-Directions{
   display: flex;
   justify-content: space-between;

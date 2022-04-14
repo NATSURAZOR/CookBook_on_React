@@ -7,6 +7,10 @@ import { Method } from "../components/EditRecipy/Method";
 import { MethodPreview } from "../components/EditRecipy/MethodPreview";
 import { Alert} from 'reactstrap';
 import { useNavigate } from "react-router-dom";
+import { faSave, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "./NewRecipePage.css";
 
 export function NewRecept(){
   const [error, setError] = useState();
@@ -36,26 +40,30 @@ export function NewRecept(){
   console.log(newRecipe);
 
   return (
-    <div>
-    <form>
-      <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
-      <input type="text" value={newRecipe.title} onChange={updateRecipeTitle} required />
-      <span hidden={newRecipe.title === ""? false : true}>*Recipe Name can't be empty</span>
-      <button disabled={newRecipe.title === "" ? true : false} onClick={createNewRecipe}>Save</button>
-      <Link to={`/`} >
-        <button>Decline</button>
-      </Link>
-      <div>
-      <div>
-      <BasicData newRecipe={newRecipe} setNewRecipe={setNewRecipe}  />
-      <Ingredients newRecipe={newRecipe} setNewRecipe={setNewRecipe} />
-      <Method newRecipe={newRecipe} setNewRecipe={setNewRecipe} />
+    <form className="NewRecipePage">
+      <div className="NewRecipePage-header">
+        <div className="NewRecipePage-header-title">
+            <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
+        </div>
+        <div className="NewRecipePage-header-buttons">
+          <button className="NewRecipePage-header-button-Save" disabled={newRecipe.title === "" ? true : false} onClick={createNewRecipe}><FontAwesomeIcon icon={faSave} />     Save</button>
+          <Link to={`/`} >
+            <button className="NewRecipePage-header-button-Decline" > <FontAwesomeIcon icon={faTrashAlt} />     Decline</button>
+          </Link>
+        </div>
       </div>
-      <div>
+      <fieldset className="NewRecipePage-title-input-section">
+        <input className="NewRecipePage-title-input" type="text" value={newRecipe.title} onChange={updateRecipeTitle} required />
+        <span className="NewRecipePage-title-wrong" hidden={newRecipe.title === ""? false : true}>*Recipe Name can't be empty</span>
+      </fieldset>
+      <div className="NewRecipePage-body-3items">
+        <BasicData newRecipe={newRecipe} setNewRecipe={setNewRecipe}  />
+        <Ingredients newRecipe={newRecipe} setNewRecipe={setNewRecipe} />
+        <Method newRecipe={newRecipe} setNewRecipe={setNewRecipe} />
+      </div>
+      <div className="NewRecipePage-body-item4">
         <MethodPreview newRecipe={newRecipe} />
       </div>
-      </div>
     </form>
-    </div>
   );
 }

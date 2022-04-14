@@ -1,4 +1,5 @@
 import React from "react";
+import "./BasicData.css";
 
 export function BasicData({newRecipe, setNewRecipe}){
 
