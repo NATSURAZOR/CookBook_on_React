@@ -61,7 +61,9 @@ export function BasicData({newRecipe, setNewRecipe}){
       <legend><h1>Basic data</h1></legend>
       <div className="EditRecipy-preparationTime">
         <label htmlFor="preparationTime">Preparation Time</label>
+
         <div className="EditRecipy-input-span-section">
+
         <input id="preparationTime" type="number" min="0" max="999"  value={newRecipe.preparationTime === undefined ? "" : newRecipe.preparationTime} onChange={updateRecipePreparationTime} />
         <span>min</span>
         </div>

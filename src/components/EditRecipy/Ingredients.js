@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState } from 'react';
 import { faTrashAlt, faPlus, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -153,3 +154,4 @@ export function Ingredients({newRecipe, setNewRecipe}){
     </div>
   );
 }
+
