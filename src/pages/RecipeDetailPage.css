@@ -40,6 +40,7 @@
 }
 
 .RecipeDetailPage-Ingredient-ServingCount-Section{
+  padding: 2rem 0 ;
   font-size: 2rem;
   display: flex;
   flex-direction: row;
@@ -105,10 +106,45 @@
   padding-left: 2rem;
 }
 
-.RecipeDetailPage-Directions p{
+.reactmarckDown{
+
   font-size: 2rem;
 }
 
+.reactmarckDown ol{
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reactmarckDown ol li{
+  counter-increment: step-counter 1;
+  position: relative;
+  padding-left: 3em;
+  line-height: 1.5em;
+  display: list-item;
+  text-align: -webkit-match-parent;
+  margin: 1.5rem 0;
+  list-style-type: none;
+}
+
+.reactmarckDown ol li::before{
+  content: counter(step-counter);
+  position: absolute;
+  left: 0px;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  border: 1px solid rgb(0, 119, 234);
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  background-color: dodgerblue;
+}
 
 .RecipeDetailPage-lastUpdateTime{
   margin-top: 2rem;
@@ -129,4 +165,8 @@
   border: 0.2rem solid rgba(1, 1, 41, 0.3);
   background-color: rgba(12, 12, 255, 0.3);
   font-size: 3rem;
+}
+
+.RecipeDetailPage-Directions{
+  margin-top: 4rem;
 }

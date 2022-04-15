@@ -16,7 +16,7 @@ export function Method({newRecipe, setNewRecipe}){
         <fieldset>
           <legend><h1>Method</h1></legend>
           <div>
-            <textarea rows="20" value={newRecipe.directions} onChange={updateDirections}></textarea>
+            <textarea  rows="20" value={newRecipe.directions} onChange={updateDirections}></textarea>
           </div>
         </fieldset>
       </div>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { api } from '../api';
 import { faBowlFood, faClock, faPenToSquare, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactMarkdown from "react-markdown";
 
 import "./RecipeDetailPage.css";
 
@@ -164,7 +165,7 @@ export function RecipeDetailPage() {
               {ingredientsArray(recipe.ingredients)}
           </div>
           <div className='RecipeDetailPage-Directions'>
-            <p  hidden={recipe?.directions?.length < 1}>{recipe.directions}</p>
+            <ReactMarkdown className='reactmarckDown' hidden={recipe?.directions?.length < 1}>{recipe.directions}</ReactMarkdown>
             <div className='RecipeDetailPage-Directions-noMethod' hidden={recipe?.directions?.length > 1}>No Method</div>
           </div>
         </div>

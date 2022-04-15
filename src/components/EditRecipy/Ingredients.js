@@ -88,8 +88,7 @@ export function Ingredients({newRecipe, setNewRecipe}){
   }
 
 
-  const whichTypeOfIngredient = (ingredient, index) => {
-    console.log(index);
+  const whichTypeOfIngredient = (ingredient) => {
     if(ingredient.isGroup){
       return (
         <div className="EditRecipy-group">
@@ -147,7 +146,7 @@ export function Ingredients({newRecipe, setNewRecipe}){
                       <Draggable key={ingredient._id} draggableId={ingredient._id} index={index}>
                         {(provided) => (
                           <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="EditRecipy-listOfIngredients-ingredient" key={ingredient._id}>
-                              {whichTypeOfIngredient(ingredient, index)}
+                              {whichTypeOfIngredient(ingredient)}
                           </li>
                         )}
                         </Draggable>
