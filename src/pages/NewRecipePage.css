@@ -1,0 +1,91 @@
+/*header */
+.NewRecipePage-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.NewRecipePage-header-title h1{
+  font-size: 4rem;
+}
+
+.NewRecipePage-header-title{
+  width: 70%;
+}
+
+.NewRecipePage-header-buttons{
+  width: 30%;
+  display: flex;
+  justify-content: right;
+}
+
+
+/* title input */
+.NewRecipePage-title-input-section{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.NewRecipePage-title-input{
+  border-radius: 2rem;
+  font-size: 2rem;
+  padding-left: 1.5rem;
+}
+
+.NewRecipePage-title-wrong{
+  color: red;
+  padding: 1rem 1.5rem;
+}
+
+
+/*Basic data addingredients method method preview */
+
+.NewRecipePage-body-3items{
+  display: flex;
+  flex-direction: row;
+}
+
+.NewRecipePage-body-3items h1{
+  font-size: 3.5rem;
+}
+
+.NewRecipePage-body-3items h3{
+  font-size: 2.7rem;
+}
+
+.NewRecipePage-body-3items input,
+.NewRecipePage-body-3items label,
+.NewRecipePage-body-3items span,
+.NewRecipePage-body-3items textarea,
+.NewRecipePage-body-3items p{
+  font-size: 1.5rem;
+}
+
+.NewRecipePage-body-3items textarea{
+  width: 100%;
+}
+
+.NewRecipePage-body-item4{
+  display: flex;
+}
+
+.EditRecipy-basic-data{
+  flex: 1 1 0%;
+}
+
+.EditRecipy-ingredients{
+  padding-left: 2rem;
+  flex: 2 1 0%;
+}
+
+.EditRecipy-Method{
+  padding-left: 2rem;
+  flex: 3 1 0%;
+}
+
+.MethodPreview-section p {
+  font-size: 2rem;
+}
+

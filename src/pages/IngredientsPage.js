@@ -4,6 +4,8 @@ import { api } from "../api";
 import { Spinner, Alert } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 
+import "./IngredientsPage.css";
+
 export function IngredientsPage(){
   const { slug } = useParams();
   const [isLoading, setLoading] = useState(false);
@@ -32,7 +34,8 @@ export function IngredientsPage(){
   console.log(ingredientss);
 
   return (
-    <div>
+    <div className="ingredients-Page">
+      <h2>List of Ingredients</h2>
       <ul>
       {ingredientss?.map((ingredient) =>
         <li key={"id" + ingredient}>{ingredient}</li>)

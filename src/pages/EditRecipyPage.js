@@ -44,7 +44,7 @@ export function EditRecipy(){
 
 
   const udateRecipe = (event) => {
-
+    console.log("before update ", newRecipe);
     event.preventDefault();
 
     api
@@ -60,34 +60,31 @@ export function EditRecipy(){
   }
 
   return (
-    <div className="EditRecipe-section">
-    <form >
-
-      <div className="EditRecipe-header">
-        <div className="EditRecipe-header-RecipeTitle">
+    <form className="NewRecipePage" >
+      <div className="NewRecipePage-header">
+        <div className="NewRecipePage-header-title">
           <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
-          <input type="text" value={newRecipe.title} onChange={updateRecipeTitle } required />
-          <span hidden={newRecipe.title !== ""}>*Recipe Name can't be empty</span>
-          <span hidden={newRecipe.title !== startTitle}>*Recipe Name need to change</span>
-         </div>
-         <div className="EditRecipe-header-buttons-Save-delete">
-          <button disabled={newRecipe.title === "" || newRecipe.title === startTitle } onClick={udateRecipe}>Save</button>
+        </div>
+        <div className="NewRecipePage-header-buttons">
+          <button className="button-green" disabled={newRecipe.title === "" || newRecipe.title === startTitle } onClick={udateRecipe}>Save</button>
           <Link to={`/recipes/${slug}`} >
-            <button>Decline</button>
+            <button className="button-red">Decline</button>
           </Link>
         </div>
       </div>
-      <div className="EditRecipe-body">
-        <div className="EditRecipe-body-threeElemts">
+      <fieldset className="NewRecipePage-title-input-section">
+        <input className="NewRecipePage-title-input" type="text" value={newRecipe.title} onChange={updateRecipeTitle } required />
+        <span className="NewRecipePage-title-wrong" hidden={newRecipe.title !== ""}>*Recipe Name can't be empty</span>
+        <span className="NewRecipePage-title-wrong" hidden={newRecipe.title !== startTitle}>*Recipe Name need to change</span>
+      </fieldset>
+      <div className="NewRecipePage-body-3items">
         <BasicData newRecipe={newRecipe} setNewRecipe={setNewRecipe}  />
         <Ingredients newRecipe={newRecipe} setNewRecipe={setNewRecipe} />
         <Method newRecipe={newRecipe} setNewRecipe={setNewRecipe} />
-        </div>
-      <div className="EditRecipe-body-forhElemnt">
+      </div>
+      <div className="NewRecipePage-body-item4">
         <MethodPreview newRecipe={newRecipe} />
       </div>
-      </div>
     </form>
-    </div>
   );
 }

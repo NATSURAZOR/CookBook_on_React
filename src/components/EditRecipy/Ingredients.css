@@ -1,0 +1,105 @@
+.EditRecipy-listOfIngredients ul{
+  padding: 0;
+}
+
+.EditRecipy-listOfIngredients li{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: 0.1rem solid rgba(1, 1, 41, 0.1);
+}
+
+
+.EditRecipy-listOfIngredients-GroupName{
+  width: 100%;
+  text-align: center;
+}
+
+.EditRecipy-listOfIngredients-button{
+  flex: 2 1 0%;
+}
+
+.EditRecipy-listOfIngredients-amount{
+  flex: 1 1 0%;
+}
+
+.EditRecipy-listOfIngredients-amountUnit{
+  flex: 1 1 0%;
+}
+
+.EditRecipy-listOfIngredients-name{
+  flex: 4 1 0%;
+}
+.EditRecipy-listOfIngredients-move{
+  flex: 1 1 0%;
+}
+
+.EditRecipy-group{
+  display: flex;
+  width: 100%;
+  background-color: rgba(1, 1, 41, 0.1);
+}
+
+.EditRecipy-listOfIngredients-move{
+  display: flex;
+  justify-content: right;
+}
+
+.EditRecipy-listOfIngredients-button-group button{
+  border: none;
+  color: red;
+  font-size: 2rem;
+}
+
+.EditRecipy-listOfIngredients-button button{
+  border: none;
+  background-color: white;
+  color: red;
+  font-size: 2rem;
+}
+
+.EditRecipy-addIngredient,
+.EditRecipy-AddAGroup{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.EditRecipy-addIngredient-inputs{
+  display: flex;
+  justify-content: space-between;
+}
+
+.EditRecipy-addIngredient-input-amount,.EditRecipy-addIngredient-input-amountUnit{
+  width: 49%;
+  border-radius: 2rem;
+  padding-left: 1rem;
+  border: 0.1rem solid rgba(1, 1, 41);
+}
+
+.EditRecipy-addIngredient-inputs{
+  margin: 1rem 0;
+}
+
+.EditRecipy-addIngredient-name-input{
+  border: none;
+  width: 85%;
+  border-bottom-left-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  border: 0.1rem solid rgba(1, 1, 41);
+  padding-left: 1rem;
+}
+
+.EditRecipy-addIngredient-add-button{
+  border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  background-color: white;
+  width: 15%;
+  font-size: 1.5rem;
+  border: 0.1rem solid rgb(1, 1, 41);
+}
+
+.EditRecipy-AddAGroup-input-button{
+  margin: 1rem 0;
+}
