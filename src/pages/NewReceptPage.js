@@ -37,8 +37,6 @@ export function NewRecept(){
     return <Alert color="danger">Whooops!!!! Something gona wrong</Alert>;
   }
 
-  console.log(newRecipe);
-
   return (
     <form className="NewRecipePage">
       <div className="NewRecipePage-header">

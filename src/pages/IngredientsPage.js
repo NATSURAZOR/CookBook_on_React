@@ -31,7 +31,7 @@ export function IngredientsPage(){
   if (error) {
     return <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>;
   }
-  console.log(ingredientss);
+
 
   return (
     <div className="ingredients-Page">
