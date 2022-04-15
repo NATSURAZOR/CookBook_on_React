@@ -21,24 +21,6 @@ export function SidedishesPage(){
     .finally(() => setLoading(false));
   }, [])
 
-
-  // useEffect(() => {
-  //   setLoading(true);
-
-  //   api
-  //     .get('/recipes')
-  //     .then((res) => {
-  //       const sideD = res.data.map((recipe) => recipe.sideDish);
-  //       const filteredSideD = sideD.filter((element) => element !== undefined);
-
-  //       setSideDishes(filteredSideD);
-  //     })
-  //     .catch((error) => setError(error))
-  //     .finally(() => setLoading(false));
-
-  // }, [])
-
-
   if (isLoading) {
     return <Spinner />;
   }
@@ -46,8 +28,6 @@ export function SidedishesPage(){
   if (error) {
     return <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>;
   }
-
-  console.log(sideDishes);
 
   return (
     <div className="side-dish-page">

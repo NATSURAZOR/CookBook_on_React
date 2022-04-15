@@ -61,7 +61,6 @@ export function RecipeListPage() {
 
 
   }
-  console.log(recipes);
 
   const sortRecipesbyPreparationTimeFromsBiggest = (recipess) => {
 
