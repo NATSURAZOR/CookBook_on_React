@@ -1,3 +1,44 @@
-.EditRecipy-basic-data h3{
-  font-size: 3rem;
+.EditRecipy-preparationTime,
+.EditRecipy-NumberOfServings,
+.EditRecipy-topping{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.EditRecipy-input-span-section{
+  display: flex;
+  flex-direction: row;
+  border: 0.1rem solid rgba(1, 1, 41);
+  margin: 1rem 0;
+}
+
+.EditRecipy-preparationTime input{
+  width: 80%;
+  border: none;
+  padding-left  : 1rem;
+}
+
+.EditRecipy-preparationTime span{
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(1, 1, 41, 0.1);
+  border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.EditRecipy-NumberOfServings input,
+.EditRecipy-topping input{
+  margin: 1rem 0;
+  border: 0.1rem solid rgba(1, 1, 41);
+  padding-left: 1rem;
+}
+
+.EditRecipy-NumberOfServings input,
+.EditRecipy-topping input,
+.EditRecipy-input-span-section,
+.EditRecipy-preparationTime input{
+  border-radius: 2rem;
+
 }

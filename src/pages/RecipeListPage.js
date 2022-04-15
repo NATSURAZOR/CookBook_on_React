@@ -98,7 +98,7 @@ export function RecipeListPage() {
         </div>
         <div className='RecipeListPage-header-button-link'>
           <Link to={"/new-recipe"} >
-            <button  className='RecipeListPage-header-newRecipeButton'><FontAwesomeIcon icon={faUtensils} />    New Recipe</button>
+            <button  className='button-green'><FontAwesomeIcon icon={faUtensils} />    New Recipe</button>
           </Link>
         </div>
       </div>

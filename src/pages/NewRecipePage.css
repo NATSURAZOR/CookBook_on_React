@@ -20,43 +20,6 @@
   justify-content: right;
 }
 
-.NewRecipePage-header-button-Save{
-  font-size: 1.7rem;
-  background-color: rgb(40, 167, 69);
-  padding: 0.5rem 0.8rem;
-  color: white;
-  border-radius: 2rem;
-  border: none;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  margin: 0 1rem 0 0;
-}
-
-.NewRecipePage-header-button-Decline{
-  font-size: 1.7rem;
-  background-color: rgb(167, 40, 40);
-  padding: 0.5rem 0.8rem;
-  color: white;
-  border-radius: 2rem;
-  border: none;
-}
-
-.NewRecipePage-header-button-Save:hover{
-  background-color: rgb(18, 84, 33);
-}
-
-.NewRecipePage-header-button-Decline:hover{
-  background-color: rgb(94, 21, 21);
-}
-
-.NewRecipePage-header-button-Save:active{
-  background-color: rgb(18, 84, 33);
-  font-size: 2rem;
-}
-
-.NewRecipePage-header-button-Decline:active{
-  background-color: rgb(94, 21, 21);
-  font-size: 2rem;
-}
 
 /* title input */
 .NewRecipePage-title-input-section{
@@ -84,20 +47,45 @@
   flex-direction: row;
 }
 
+.NewRecipePage-body-3items h1{
+  font-size: 3.5rem;
+}
+
+.NewRecipePage-body-3items h3{
+  font-size: 2.7rem;
+}
+
+.NewRecipePage-body-3items input,
+.NewRecipePage-body-3items label,
+.NewRecipePage-body-3items span,
+.NewRecipePage-body-3items textarea,
+.NewRecipePage-body-3items p{
+  font-size: 1.5rem;
+}
+
+.NewRecipePage-body-3items textarea{
+  width: 100%;
+}
+
 .NewRecipePage-body-item4{
   display: flex;
 }
 
 .EditRecipy-basic-data{
-  max-width: 25%;
+  flex: 1 1 0%;
 }
 
 .EditRecipy-ingredients{
   padding-left: 2rem;
-  max-width: 35%;
+  flex: 2 1 0%;
 }
 
 .EditRecipy-Method{
   padding-left: 2rem;
-  width: 40%;
+  flex: 3 1 0%;
 }
+
+.MethodPreview-section p {
+  font-size: 2rem;
+}
+

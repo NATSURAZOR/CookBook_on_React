@@ -17,44 +17,6 @@
   flex-direction: row;
 }
 
-.RecipeDetailPage-button-Update{
-  font-size: 1.7rem;
-  background-color: rgb(40, 167, 69);
-  padding: 0.5rem;
-  color: white;
-  border-radius: 2rem;
-  border: none;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  margin: 0 1rem 0 0;
-}
-
-.RecipeDetailPage-button-Delete{
-  font-size: 1.7rem;
-  background-color: rgb(167, 40, 40);
-  padding: 0.5rem;
-  color: white;
-  border-radius: 2rem;
-  border: none;
-}
-
-.RecipeDetailPage-button-Update:hover{
-  background-color: rgb(18, 84, 33);
-}
-
-.RecipeDetailPage-button-Delete:hover{
-  background-color: rgb(94, 21, 21);
-}
-
-.RecipeDetailPage-button-Update:active{
-  background-color: rgb(18, 84, 33);
-  font-size: 2rem;
-}
-
-.RecipeDetailPage-button-Delete:active{
-  background-color: rgb(94, 21, 21);
-  font-size: 2rem;
-}
-
 .RecipeDetailPage-Ingredients-and-Directions{
   display: flex;
   justify-content: space-between;

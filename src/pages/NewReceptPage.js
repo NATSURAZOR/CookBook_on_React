@@ -46,9 +46,9 @@ export function NewRecept(){
             <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
         </div>
         <div className="NewRecipePage-header-buttons">
-          <button className="NewRecipePage-header-button-Save" disabled={newRecipe.title === "" ? true : false} onClick={createNewRecipe}><FontAwesomeIcon icon={faSave} />     Save</button>
+          <button className="button-green" disabled={newRecipe.title === "" ? true : false} onClick={createNewRecipe}><FontAwesomeIcon icon={faSave} />     Save</button>
           <Link to={`/`} >
-            <button className="NewRecipePage-header-button-Decline" > <FontAwesomeIcon icon={faTrashAlt} />     Decline</button>
+            <button className="button-red" > <FontAwesomeIcon icon={faTrashAlt} />     Decline</button>
           </Link>
         </div>
       </div>
