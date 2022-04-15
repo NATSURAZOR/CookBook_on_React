@@ -10,9 +10,7 @@
   border-top: 0.1rem solid rgba(1, 1, 41, 0.1);
 }
 
-.EditRecipy-listOfIngredients-Group{
-  background-color: rgba(1, 1, 41, 0.1);
-}
+
 
 .EditRecipy-listOfIngredients-GroupName{
   width: 100%;
@@ -36,6 +34,12 @@
 }
 .EditRecipy-listOfIngredients-move{
   flex: 1 1 0%;
+}
+
+.EditRecipy-group{
+  display: flex;
+  width: 100%;
+  background-color: rgba(1, 1, 41, 0.1);
 }
 
 
@@ -102,15 +106,3 @@
   margin: 1rem 0;
 }
 
-.EditRecipy-listOfIngredients-move{
-  font-size: 2rem;
-  color:rgba(1, 1, 41, 0.3);
-}
-
-.EditRecipy-listOfIngredients-move:hover{
-  color:rgba(1, 1, 41, 0.6);
-}
-
-.EditRecipy-listOfIngredients-move:active{
-  color:rgb(1, 1, 41);
-}
