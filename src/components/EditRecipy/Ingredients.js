@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from 'react';
-import { faTrashAlt, faPlus, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import "./Ingredients.css";
 
@@ -87,23 +88,23 @@ export function Ingredients({newRecipe, setNewRecipe}){
   }
 
 
-  const whichTypeOfIngredient = (ingredient) => {
+  const whichTypeOfIngredient = (ingredient, index) => {
+    console.log(index);
     if(ingredient.isGroup){
       return (
-      <li className="EditRecipy-listOfIngredients-Group" key={ingredient._id}>
+        <div className="EditRecipy-group">
         <div className="EditRecipy-listOfIngredients-button-group">
           <button type="button" onClick={() => deleteIngredient(ingredient._id)}><FontAwesomeIcon icon={faTrashAlt} /> </button>
         </div>
         <div className="EditRecipy-listOfIngredients-GroupName">
               <p>{ingredient.name}</p>
         </div>
-        <div className="EditRecipy-listOfIngredients-move"><FontAwesomeIcon icon={faBars} /></div>
-      </li>
+        </div>
       );
     }
 
     return (
-      <li className="EditRecipy-listOfIngredients-ingredient" key={ingredient._id}>
+      <>
         <div className="EditRecipy-listOfIngredients-button">
           <button type="button" onClick={() => deleteIngredient(ingredient._id)}><FontAwesomeIcon icon={faTrashAlt} /> </button>
         </div>
@@ -116,9 +117,20 @@ export function Ingredients({newRecipe, setNewRecipe}){
         <div className="EditRecipy-listOfIngredients-name">
           <p>{ingredient.name}</p>
         </div>
-        <div className="EditRecipy-listOfIngredients-move"><FontAwesomeIcon icon={faBars} /></div>
-      </li>
+        </>
     );
+  }
+
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const items = Array.from(newRecipe.ingredients);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setNewRecipe({...newRecipe, ingredients:items});
   }
 
   return (
@@ -126,9 +138,26 @@ export function Ingredients({newRecipe, setNewRecipe}){
       <fieldset>
         <legend><h1>Ingredients</h1></legend>
         <div className="EditRecipy-listOfIngredients">
-          <ul>
-          {newRecipe.ingredients?.map((ingredient) => whichTypeOfIngredient(ingredient) )}
-          </ul>
+          <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Droppable droppableId="ingredients">
+              {(provided) => (
+                <ul {...provided.droppableProps} ref={provided.innerRef}>
+                  {newRecipe.ingredients?.map((ingredient, index) => {
+                    return (
+                      <Draggable key={ingredient._id} draggableId={ingredient._id} index={index}>
+                        {(provided) => (
+                          <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="EditRecipy-listOfIngredients-ingredient" key={ingredient._id}>
+                              {whichTypeOfIngredient(ingredient, index)}
+                          </li>
+                        )}
+                        </Draggable>
+                    );}
+                  )}
+                  {provided.placeholder}
+                </ul>
+              )}
+            </Droppable>
+          </DragDropContext>
         </div>
         <div className="EditRecipy-addIngredient">
           <h3>Add ingredient</h3>
