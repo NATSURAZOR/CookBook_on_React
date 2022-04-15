@@ -1,8 +1,10 @@
+
 import React from "react";
 import { useState } from 'react';
 import { faTrashAlt, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
 
 import "./Ingredients.css";
 
@@ -105,6 +107,7 @@ export function Ingredients({newRecipe, setNewRecipe}){
 
     return (
       <>
+
         <div className="EditRecipy-listOfIngredients-button">
           <button type="button" onClick={() => deleteIngredient(ingredient._id)}><FontAwesomeIcon icon={faTrashAlt} /> </button>
         </div>
@@ -182,3 +185,4 @@ export function Ingredients({newRecipe, setNewRecipe}){
     </div>
   );
 }
+

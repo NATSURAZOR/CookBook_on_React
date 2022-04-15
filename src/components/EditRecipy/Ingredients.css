@@ -11,6 +11,7 @@
 }
 
 
+
 .EditRecipy-listOfIngredients-GroupName{
   width: 100%;
   text-align: center;
@@ -40,6 +41,7 @@
   width: 100%;
   background-color: rgba(1, 1, 41, 0.1);
 }
+
 
 .EditRecipy-listOfIngredients-move{
   display: flex;
@@ -103,3 +105,4 @@
 .EditRecipy-AddAGroup-input-button{
   margin: 1rem 0;
 }
+
