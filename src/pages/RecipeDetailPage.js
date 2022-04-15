@@ -137,10 +137,10 @@ export function RecipeDetailPage() {
         </div>
         <div className='RecipeDetailPage-buttons-delete-and-update'>
         <Link to={`/recipes/${slug}/upravit`} >
-          <button className='RecipeDetailPage-button-Update'> <FontAwesomeIcon icon={faPenToSquare} />     Edit</button>
+          <button className='button-green'> <FontAwesomeIcon icon={faPenToSquare} />     Edit</button>
         </Link>
         <Link to={'/'}>
-          <button className='RecipeDetailPage-button-Delete' onClick={() => api.delete(`/recipes/${recipe._id}`)} > <FontAwesomeIcon icon={faTrashAlt} />     Delete</button>
+          <button className='button-red' onClick={() => api.delete(`/recipes/${recipe._id}`)} > <FontAwesomeIcon icon={faTrashAlt} />     Delete</button>
         </Link>
         </div>
       </div>

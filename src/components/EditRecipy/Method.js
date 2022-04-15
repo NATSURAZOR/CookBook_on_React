@@ -12,9 +12,9 @@ export function Method({newRecipe, setNewRecipe}){
   }
 
   return (
-      <div>
+      <div className="EditRecipy-Method">
         <fieldset>
-          <legend><h3>Method</h3></legend>
+          <legend><h1>Method</h1></legend>
           <div>
             <textarea rows="20" value={newRecipe.directions} onChange={updateDirections}></textarea>
           </div>

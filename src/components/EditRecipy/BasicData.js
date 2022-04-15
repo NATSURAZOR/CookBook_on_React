@@ -1,4 +1,5 @@
 import React from "react";
+import "./BasicData.css";
 
 export function BasicData({newRecipe, setNewRecipe}){
 
@@ -57,11 +58,15 @@ export function BasicData({newRecipe, setNewRecipe}){
   return (
     <div className="EditRecipy-basic-data">
     <fieldset>
-      <legend><h3>Basic data</h3></legend>
+      <legend><h1>Basic data</h1></legend>
       <div className="EditRecipy-preparationTime">
         <label htmlFor="preparationTime">Preparation Time</label>
+
+        <div className="EditRecipy-input-span-section">
+
         <input id="preparationTime" type="number" min="0" max="999"  value={newRecipe.preparationTime === undefined ? "" : newRecipe.preparationTime} onChange={updateRecipePreparationTime} />
         <span>min</span>
+        </div>
       </div>
       <div className="EditRecipy-NumberOfServings">
         <label htmlFor='NumberOfServings'>Number of servings</label>

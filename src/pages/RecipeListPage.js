@@ -5,6 +5,8 @@ import { api } from '../api';
 import { RecipesList } from '../components/RecipesList';
 import { Link } from 'react-router-dom';
 import { SearchInput } from '../components/SearchInput';
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./RecipeListPage.css";
 
@@ -96,7 +98,7 @@ export function RecipeListPage() {
         </div>
         <div className='RecipeListPage-header-button-link'>
           <Link to={"/new-recipe"} >
-            <button  className='RecipeListPage-header-newRecipeButton'>New Recipe</button>
+            <button  className='button-green'><FontAwesomeIcon icon={faUtensils} />    New Recipe</button>
           </Link>
         </div>
       </div>
