@@ -22,10 +22,10 @@ export function Header() {
           <Link className="nav-topings" to="recipes/side-dishes"><h3>Topings</h3></Link>
           <Link className="nav-ingredients" to="/recipes/ingredients"><h3>Ingredients</h3></Link>
         </div>
-
         <div className="nav-topings-name-mobile">
-        <button className="nav-topings-name-mobile-button" onClick={openLinks}><FontAwesomeIcon className="nav-topings-name-mobile-icon" icon={faArrowDownShortWide} /></button>
-
+        <button className="nav-topings-name-mobile-button" onClick={openLinks}>
+          <FontAwesomeIcon className="nav-topings-name-mobile-icon" icon={faArrowDownShortWide} />
+        </button>
         <ul hidden={!linksMobile}>
             <li><Link className="nav-mobile-recipe" to="/"><h3>Recipe</h3></Link></li>
             <li><Link className="nav-mobile-topings" to="recipes/side-dishes"><h3>Topings</h3></Link></li>

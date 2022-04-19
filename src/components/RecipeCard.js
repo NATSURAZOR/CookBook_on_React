@@ -35,7 +35,6 @@ export function RecipeCard({ title, preparationTime, slug, sideDish }) {
       </div>
       <div className='RecipeCard-bodyText'>
         <h2>{title.length > 30 ? title.slice(0, 30) + "..." : title}</h2>
-
         <p>{convertPreparatonTime() === "Not added time" ? "" :<FontAwesomeIcon icon={faClock} />  }{convertPreparatonTime()}
         {sideDish === undefined ? "" : <FontAwesomeIcon icon={faBowlFood} />} {sideDish}</p>
       </div>

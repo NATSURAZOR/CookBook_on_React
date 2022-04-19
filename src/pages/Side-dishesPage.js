@@ -9,7 +9,6 @@ export function SidedishesPage(){
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState();
 
-
   useEffect(() => {
     setLoading(true);
 
@@ -33,8 +32,8 @@ export function SidedishesPage(){
     <div className="side-dish-page">
       <h2>List of Side Dish:</h2>
       <ul>
-      {sideDishes?.map((item) => (
-        <li>{item}</li>
+      {sideDishes?.map((item, index) => (
+        <li key={"id" + index + item}>{item}</li>
         )
       )}
       </ul>

@@ -38,9 +38,8 @@ export function RecipeDetailPage() {
     return <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>;
   }
 
-  console.log(recipe);
 
-  function convertPreparationTime(){
+  const convertPreparationTime = () =>{
     const hours = recipe.preparationTime / 60;
     const minutes = recipe.preparationTime % 60;
 
@@ -61,7 +60,7 @@ export function RecipeDetailPage() {
     return result;
   }
 
-  function ingredientsArray(ingredients) {
+  const ingredientsArray = (ingredients) => {
     if(ingredients?.length === 0){
       return (<div className='RecipeDetailPage-noIngrdients'>No Ingredients.</div>);
     }
@@ -85,7 +84,7 @@ export function RecipeDetailPage() {
     setNewServingCount(e.target.valueAsNumber);
   }
 
-  function isGroupOrIngredient(ingredient)  {
+  const isGroupOrIngredient = (ingredient) => {
     if (ingredient?.isGroup){
 
       return (
@@ -99,8 +98,8 @@ export function RecipeDetailPage() {
     let ingredientAmountUnit = "";
 
 
-    if (ingredient.amount !== NaN && ingredient.amount !== undefined){
-      if (recipe.servingCount === undefined || recipe.servingCount === NaN){
+    if (ingredient.amount  !== isNaN && ingredient.amount !== undefined){
+      if (recipe.servingCount === undefined || recipe.servingCount === isNaN){
         ingredientAmount = ingredient.amount;
       }
       else{
@@ -110,10 +109,9 @@ export function RecipeDetailPage() {
 
     if(ingredientAmount === 0){
       ingredientAmount = ingredient.amount;
-      console.log(ingredientAmount);
     }
 
-    if (ingredient.amountUnit !== NaN && ingredient.amountUnit !== undefined){
+    if (ingredient.amountUnit !== isNaN && ingredient.amountUnit !== undefined){
       ingredientAmountUnit = ingredient.amountUnit;
     }
 

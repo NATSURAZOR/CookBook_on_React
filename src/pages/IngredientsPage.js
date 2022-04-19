@@ -23,7 +23,6 @@ export function IngredientsPage(){
     .finally(() => setLoading(false));
   }, [slug])
 
-
   if (isLoading) {
     return <Spinner />;
   }
@@ -31,7 +30,6 @@ export function IngredientsPage(){
   if (error) {
     return <Alert color="danger">Vyskytla se chyba při načítání dat</Alert>;
   }
-
 
   return (
     <div className="ingredients-Page">
