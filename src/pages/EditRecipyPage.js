@@ -21,17 +21,15 @@ export function EditRecipy(){
   useEffect(() => {
     setLoading(true);
 
-
     api
       .get(`/recipes/${slug}`)
       .then((res) => {
         setNewRecipe(res.data);
         setStartTitle(res.data.title);
-
       })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-  }, []);
+  }, [slug]);
 
 
   if (isLoading) {
@@ -54,7 +52,7 @@ export function EditRecipy(){
     .catch((error) => setError(error));
   }
 
-  const updateRecipeTitle = (e) => {
+ const updateRecipeTitle = (e) => {
     setNewRecipe({...newRecipe, title:e.target.value})
   }
 

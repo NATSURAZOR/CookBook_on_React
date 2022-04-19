@@ -44,7 +44,7 @@ export function NewRecept(){
             <h1>{newRecipe.title !== "" ? newRecipe.title : "Recipe Name"}</h1>
         </div>
         <div className="NewRecipePage-header-buttons">
-          <button className="button-green" disabled={newRecipe.title === "" ? true : false} onClick={createNewRecipe}><FontAwesomeIcon icon={faSave} />     Save</button>
+          <button className="button-green" disabled={newRecipe.title === ""} onClick={createNewRecipe}><FontAwesomeIcon icon={faSave} />     Save</button>
           <Link to={`/`} >
             <button className="button-red" > <FontAwesomeIcon icon={faTrashAlt} />     Decline</button>
           </Link>
@@ -52,7 +52,7 @@ export function NewRecept(){
       </div>
       <fieldset className="NewRecipePage-title-input-section">
         <input className="NewRecipePage-title-input" type="text" value={newRecipe.title} onChange={updateRecipeTitle} required />
-        <span className="NewRecipePage-title-wrong" hidden={newRecipe.title === ""? false : true}>*Recipe Name can't be empty</span>
+        <span className="NewRecipePage-title-wrong" hidden={newRecipe.title !== ""}>*Recipe Name can't be empty</span>
       </fieldset>
       <div className="NewRecipePage-body-3items">
         <BasicData newRecipe={newRecipe} setNewRecipe={setNewRecipe}  />

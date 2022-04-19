@@ -8,17 +8,16 @@ export function BasicData({newRecipe, setNewRecipe}){
       const updateRec = newRecipe;
       updateRec.preparationTime = 0;
       setNewRecipe(updateRec);
-
     }
 
     if (e.target.value === ""){
       setNewRecipe({...newRecipe, preparationTime: ""});
-      return
+      return;
     }
 
     if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 9999){
       setNewRecipe({...newRecipe, preparationTime: newRecipe.preparationTime});
-      return
+      return;
     }
 
     setNewRecipe({...newRecipe, preparationTime: e.target.valueAsNumber});
@@ -33,12 +32,12 @@ export function BasicData({newRecipe, setNewRecipe}){
 
     if (e.target.value === ""){
       setNewRecipe({...newRecipe, servingCount: ""});
-      return
+      return;
     }
 
     if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 99){
       setNewRecipe({...newRecipe, servingCount: newRecipe.servingCount});
-      return
+      return;
     }
 
     setNewRecipe({...newRecipe, servingCount: e.target.valueAsNumber});
@@ -68,11 +67,11 @@ export function BasicData({newRecipe, setNewRecipe}){
       </div>
       <div className="EditRecipy-NumberOfServings">
         <label htmlFor='NumberOfServings'>Number of servings</label>
-        <input id="NumberOfServings" type="number" min="1" max="999" value={newRecipe.servingCount === undefined ? "" : newRecipe.servingCount} onChange={updateRecipeServingCount} />
+        <input id="NumberOfServings" type="number" min="0" max="999" value={newRecipe.servingCount === undefined ? "" : newRecipe.servingCount} onChange={updateRecipeServingCount} />
       </div>
       <div className="EditRecipy-topping">
         <label htmlFor="toping">Toping</label>
-        <input id="toping" type="text" maxLength="20" value={newRecipe.sideDish === undefined ? "" : newRecipe.sideDish} onChange={updateRecipeSideDish} s/>
+        <input id="toping" type="text" maxLength="20" value={newRecipe.sideDish === undefined ? "" : newRecipe.sideDish} onChange={updateRecipeSideDish} />
       </div>
     </fieldset>
   </div>

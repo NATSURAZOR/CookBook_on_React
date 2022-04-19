@@ -31,18 +31,18 @@ export function RecipeListPage() {
         if(filter === 1){
           setRecipes(res.data);
         }
+
         if (filter === 2){
           sortRecipesbyPreparationTimeFromsSmallest(res.data);
         }
+
         if(filter === 3){
           sortRecipesbyPreparationTimeFromsBiggest(res.data);
         }
+
       })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-
-
-
   }, [filter]);
 
   if (isLoading) {
@@ -58,16 +58,12 @@ export function RecipeListPage() {
     setRecipes(recipess.sort((a,b) =>
       (a.preparationTime === undefined ? 9999 : a.preparationTime) - (b.preparationTime === undefined ? 9999 : b.preparationTime)
     ));
-
-
   }
 
   const sortRecipesbyPreparationTimeFromsBiggest = (recipess) => {
-
     setRecipes(recipess.sort((a,b) =>
     (b.preparationTime === undefined ? 9999 : b.preparationTime) - (a.preparationTime === undefined ? 9999 : a.preparationTime)
     ));
-
   }
 
   const fooSetFilter = () => {
@@ -85,15 +81,14 @@ export function RecipeListPage() {
   return (
     <div className='RecipeListPage-section'>
       <div className='RecipeListPage-header'>
-          <div className='RecipeListPage-Reipe-records' >
+        <div className='RecipeListPage-Reipe-records' >
           <h1>Recipes</h1>
           <h5>Aviable records: {recipes.length} </h5>
         </div>
-          <div className='RecipeListPage-underHeader-searchButton'>
+        <div className='RecipeListPage-underHeader-searchButton'>
             <SearchInput
             value={searchValue}
-            onChange={(event) => setSearchValue(event.target.value)}
-        />
+            onChange={(event) => setSearchValue(event.target.value)}/>
         </div>
         <div className='RecipeListPage-header-button-link'>
           <Link to={"/new-recipe"} >
@@ -104,12 +99,11 @@ export function RecipeListPage() {
       <div className='RecipeListPage-Filter-section'>
           <button className='RecipeListPage-Filter-sortingButton' hidden={filterButtons === true} onClick={foooooo}>Sorting</button>
           <button className='RecipeListPage-Filter-sortingButton-active' hidden={filterButtons === false}  onClick={foooooo}>Sorting</button>
-
           <div className='RecipeListPage-Filter-2buttons' hidden={filterButtons === false}>
              <button className='RecipeListPage-Filter-smallest' onClick={fooSetFilter}>Preparation Time Smallest - Biggest</button>
              <button className='RecipeListPage-Filter-biggest' onClick={fooSetFilter2}>Preparation Time Biggest - Smallest</button>
           </div>
-          </div>
+      </div>
       {isLoading && <Spinner className="mb-4" />}
       {error && (
         <Alert color="danger">Whooops!!!! Something gona wrong</Alert>
